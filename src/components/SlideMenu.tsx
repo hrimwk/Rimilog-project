@@ -9,9 +9,9 @@ import React, { useEffect, useRef } from 'react';
 function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
   const node = useRef<HTMLDivElement>(null);
   const navList = [
-    { icon: <ImHome />, text: 'Home', link: '/' },
-    { icon: <ImClipboard />, text: 'Board', link: '/board' },
-    { icon: <ImCogs />, text: 'Edit', link: '/' },
+    { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
+    { icon: <ImClipboard />, text: 'Board', link: '/board', id: 2 },
+    { icon: <ImCogs />, text: 'Edit', link: '/', id: 3 },
   ];
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
@@ -51,7 +51,7 @@ function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
             <ul>
               {navList.map((data) => {
                 return (
-                  <li className="white" onClick={clickIcon}>
+                  <li className="white" onClick={clickIcon} key={data.id}>
                     <Link to={data.link}>
                       <div className="nav-icon">{data.icon}</div>
                       <span className="nav-text">{data.text}</span>

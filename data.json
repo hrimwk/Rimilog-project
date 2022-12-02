@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "test",
+      "password": "test1234"
+    },
+    {
+      "email": "test1@email.com",
+      "password": "$2a$10$Wcz8W6ofLqUf8Q.S4IhsceZvX12w8Bq1uJCcMv6IoXQoDm7BwkoHm",
+      "nick_name": "시험",
+      "id": "zH7jAYV"
+    },
+    {
+      "email": "test11@email.com",
+      "password": "$2a$10$gnqXypLPgwhi8WRL5IvZG.P7aPaZwqYC2iLm1KzfUHhi8dJTffC6O",
+      "nick_name": "시험",
+      "id": "64mIBNh"
+    },
+    {
+      "email": "tesss@email.com",
+      "password": "$2a$10$/5NOdtA3SClQOZKOx1Ua4.MMQnSSUCIEO0zKm3X4OlfftPw0g5/ZG",
+      "nick_name": "name",
+      "id": "XwRnGIZ"
+    },
+    {
+      "email": "eeee@ss",
+      "password": "$2a$10$zIHdgl.7TAeUYnCiSHJxJul.gSp603k9FWC62L0QVevtjS/DWOmuq",
+      "nick_name": "유저",
+      "id": "qAnknPi"
+    },
+    {
+      "email": "eeee@ssqqq",
+      "password": "$2a$10$CJ6Sceou7ymFRXllCTmGSeBPZePnGPTogUaGmbnIL9H3TWMxKZOR.",
+      "nick_name": "ssss",
+      "confirmPassword": "test1234",
+      "id": "iie5GM7"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "리덕스 미들웨어를 배워봅시다",
+      "body": "리덕스 미들웨어를 직접 만들어보면 이해하기 쉽죠."
+    },
+    {
+      "id": 2,
+      "title": "redux-thunk를 사용해봅시다",
+      "body": "redux-thunk를 사용해서 비동기 작업을 처리해봅시다!"
+    },
+    {
+      "id": 3,
+      "title": "redux-saga도 사용해봅시다",
+      "body": "나중엔 redux-saga를 사용해서 비동기 작업을 처리하는 방법도 배워볼 거예요."
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "body": "some comment22",
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
