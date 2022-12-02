@@ -38,13 +38,13 @@ function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
       <SlideMenuContainer onClick={clickSlideMenu} ref={node}>
         <div className={sideMenu ? 'slideOn slide-container' : 'slideOff slide-container'}>
           <div className="white mb-80" onClick={clickIcon}>
-            <Link to="/signin">
+            <Link to="/signup">
               <div className="user flex-center">
                 {/* <ImUser /> */}
                 <HiUserAdd />
               </div>
               {/* <span className="nav-text">User</span> */}
-              <span className="nav-text">Signin</span>
+              <span className="nav-text">Signup</span>
             </Link>
           </div>
           <nav>
