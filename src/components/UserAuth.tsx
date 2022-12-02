@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AuthFomType } from '../pages/SignUp';
 
-function UserAuth({ formList }: { formList: AuthFomType[] }) {
+function UserAuth({ formList, buttonString }: { formList: AuthFomType[]; buttonString: string }) {
   return (
     <UserAuthContainer>
       <div className="container d-flex-center">
@@ -14,7 +14,7 @@ function UserAuth({ formList }: { formList: AuthFomType[] }) {
               </>
             );
           })}
-          <button>가입하기</button>
+          <button>{buttonString}</button>
         </form>
       </div>
     </UserAuthContainer>

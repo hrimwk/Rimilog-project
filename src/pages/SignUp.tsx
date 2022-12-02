@@ -13,10 +13,11 @@ function SignUp() {
     { label: '비밀번호', value: 'pw', id: 3 },
     { label: '비밀번호 확인', value: 'pwconfirm', id: 4 },
   ];
+  const buttonString: string = '가입하기';
 
   return (
     <SignupContainer>
-      <UserAuth formList={formList} />
+      <UserAuth formList={formList} buttonString={buttonString} />
     </SignupContainer>
   );
 }
