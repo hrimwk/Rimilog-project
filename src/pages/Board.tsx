@@ -9,8 +9,13 @@ interface list {
   title: string;
   writer?: string;
   date?: string;
+  time?: string;
 }
 function Board() {
+  const month = new Date().getMonth() + 1 < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
+  const date = new Date().getDate() + 1 < 9 ? '0' + new Date().getDate() : new Date().getDate() + 1;
+  const today = `${new Date().getFullYear()}-${month}-${date}`;
+
   const navigate = useNavigate();
   const [list, setList] = useState<list[]>([]);
   const limit: number = 10;
@@ -18,7 +23,7 @@ function Board() {
   const offset = (page - 1) * limit;
 
   useEffect(() => {
-    axios.get('http://localhost:3000/posts').then((res) => {
+    axios.get('http://localhost:3000/posts?_sort=id&_order=desc').then((res) => {
       setList(res.data);
     });
   }, []);
@@ -30,7 +35,6 @@ function Board() {
           <ul className="list-head d-flex">
             <li className="num">No</li>
             <li className="list-title">Title</li>
-            <li className="writer">Writer</li>
             <li className="date">date</li>
           </ul>
           <ul>
@@ -42,8 +46,11 @@ function Board() {
                     <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
                       {data.title}
                     </li>
-                    <li className="writer">{data.writer}</li>
-                    <li className="date">{data.date}</li>
+                    {today === data.date ? (
+                      <li className="date">{data.time}</li>
+                    ) : (
+                      <li className="date">{data.date}</li>
+                    )}
                   </ul>
                 </li>
               );
@@ -91,7 +98,7 @@ const BoardContainer = styled.div`
     }
   }
   .num {
-    flex: 1 1;
+    width: 50px;
   }
   .list-title {
     flex: 5 5;
@@ -102,15 +109,11 @@ const BoardContainer = styled.div`
       text-decoration: underline;
     }
   }
-  .writer {
-    flex: 1 1;
-  }
   .date {
     flex: 1 1;
+    text-align: center;
   }
-  .category {
-    flex: 1 1;
-  }
+
   .pagination-area {
     position: absolute;
     bottom: 0px;
