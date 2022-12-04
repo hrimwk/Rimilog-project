@@ -38,11 +38,11 @@ function Board() {
             <li className="date">date</li>
           </ul>
           <ul>
-            {list.slice(offset, offset + limit).map((data) => {
+            {list.slice(offset, offset + limit).map((data, idx) => {
               return (
                 <li key={data.id}>
                   <ul className="list-body d-flex">
-                    <li className="num">{data.id}</li>
+                    <li className="num">{list.length - idx - offset}</li>
                     <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
                       {data.title}
                     </li>
