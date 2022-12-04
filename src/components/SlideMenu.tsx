@@ -1,18 +1,29 @@
 import styled from 'styled-components';
 import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
-import { CiLogin } from 'react-icons/ci';
+import { CiLogin, CiLogout } from 'react-icons/ci';
 import { HiUserAdd } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { sideMenuType } from '../App';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
   const node = useRef<HTMLDivElement>(null);
+  const loginToken = localStorage.getItem('login-token');
+
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
     { icon: <ImClipboard />, text: 'Board', link: '/board', id: 2 },
     { icon: <ImCogs />, text: 'Edit', link: '/', id: 3 },
   ];
+
+  const askLogout = () => {
+    let isLogout = confirm('로그아웃하시겠습니까?');
+    if (isLogout === true) {
+      localStorage.removeItem('login-token');
+      localStorage.removeItem('user-id');
+      alert('로그아웃 되었습니다.');
+    }
+  };
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -62,12 +73,21 @@ function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
             </ul>
           </nav>
           <div className="white mt-30" onClick={clickIcon}>
-            <Link to="/login">
-              <div className="logout">
-                <CiLogin />
-              </div>
-              <span className="nav-text">Login</span>
-            </Link>
+            {loginToken ? (
+              <>
+                <div className="logout" onClick={askLogout}>
+                  <CiLogout />
+                </div>
+                <span className="nav-text">Logout</span>
+              </>
+            ) : (
+              <Link to="/login">
+                <div className="logout">
+                  <CiLogin />
+                </div>
+                <span className="nav-text">Login</span>
+              </Link>
+            )}
           </div>
         </div>
       </SlideMenuContainer>
