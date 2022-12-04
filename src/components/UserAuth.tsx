@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Auth, AuthFomType } from '../pages/SignUp';
 
@@ -15,13 +16,31 @@ function UserAuth({
   authInput: Auth;
   postMethod: string;
 }) {
+  const navigate = useNavigate();
   function formSubmit(e: React.FormEvent) {
-    e.preventDefault;
+    e.preventDefault();
     const data = {
       ...authInput,
     };
 
-    axios.post(`http://localhost:3000/${postMethod}`, data).then((res) => alert(res));
+    axios
+      .post(`http://localhost:3000/${postMethod}`, data)
+      .then((res) => {
+        if (postMethod === 'login') {
+          localStorage.setItem('login-token', res.data.accessToken);
+          localStorage.setItem('user-id', res.data.user.id);
+          alert('로그인이 완료되었습니다.');
+          navigate('/');
+        } else {
+          alert('회원가입이 완료되었습니다.');
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        if (postMethod === 'login') {
+          alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+        }
+      });
   }
   function inputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setAuth({ ...authInput, [e.target.name]: e.target.value });
@@ -41,7 +60,7 @@ function UserAuth({
               );
             })}
           </ul>
-          <button>{buttonString}</button>
+          <button type="submit">{buttonString}</button>
         </form>
       </div>
     </UserAuthContainer>
