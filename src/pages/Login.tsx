@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import UserAuth from '../components/UserAuth';
 import { AuthFomType } from './SignUp';
+
 interface Auth {
   email: string;
   password: string;

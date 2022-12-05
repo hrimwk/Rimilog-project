@@ -3,12 +3,15 @@ import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
 import { CiLogin, CiLogout } from 'react-icons/ci';
 import { HiUserAdd } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { sideMenuType } from '../App';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { loginState, slideMenuState } from '../states/recoilState';
+import { useRecoilState } from 'recoil';
 
-function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
+function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
-  const loginToken = localStorage.getItem('login-token');
+  const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
+  const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
+  // const loginToken = localStorage.getItem('login-token');
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
@@ -22,41 +25,51 @@ function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
       localStorage.removeItem('login-token');
       localStorage.removeItem('user-id');
       alert('로그아웃 되었습니다.');
+      setLoggedIn(false);
     }
   };
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (sideMenu && node.current && !node.current.contains(target)) {
-        setSideMenu(false);
+      if (slideMenu && node.current && !node.current.contains(target)) {
+        setSlideMenu(false);
       }
     };
     document.addEventListener('mousedown', clickOutside);
     return () => {
       document.removeEventListener('mousedown', clickOutside);
     };
-  }, [sideMenu]);
+  }, [slideMenu]);
 
   function clickSlideMenu() {
-    setSideMenu(!sideMenu);
+    setSlideMenu(!slideMenu);
   }
   function clickIcon(e: React.MouseEvent<HTMLElement>) {
     e.stopPropagation();
-    setSideMenu(false);
+    setSlideMenu(false);
   }
   return (
     <>
       <SlideMenuContainer onClick={clickSlideMenu} ref={node}>
-        <div className={sideMenu ? 'slideOn slide-container' : 'slideOff slide-container'}>
+        <div className={slideMenu ? 'slideOn slide-container' : 'slideOff slide-container'}>
           <div className="white mb-80" onClick={clickIcon}>
-            <Link to="/signup">
-              <div className="user flex-center">
-                {/* <ImUser /> */}
-                <HiUserAdd />
+            {isLoggedIn ? (
+              <div>
+                <div className="user flex-center">
+                  <ImUser />
+                </div>
+                <span className="nav-text">User</span>
               </div>
-              {/* <span className="nav-text">User</span> */}
-              <span className="nav-text">Signup</span>
-            </Link>
+            ) : (
+              <Link to="/signup">
+                <div className="user flex-center">
+                  {/* <ImUser /> */}
+                  <HiUserAdd />
+                </div>
+                {/* <span className="nav-text">User</span> */}
+                <span className="nav-text">Signup</span>
+              </Link>
+            )}
           </div>
           <nav>
             <ul>
@@ -73,13 +86,13 @@ function SlideMenu({ sideMenu, setSideMenu }: sideMenuType) {
             </ul>
           </nav>
           <div className="white mt-30" onClick={clickIcon}>
-            {loginToken ? (
-              <>
-                <div className="logout" onClick={askLogout}>
+            {isLoggedIn ? (
+              <div onClick={askLogout}>
+                <div className="logout">
                   <CiLogout />
                 </div>
                 <span className="nav-text">Logout</span>
-              </>
+              </div>
             ) : (
               <Link to="/login">
                 <div className="logout">

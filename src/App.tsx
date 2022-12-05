@@ -5,21 +5,22 @@ import SlideMenu from './components/SlideMenu';
 import { useState } from 'react';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Board from './pages/Board';
+import NewPost from './pages/NewPost';
+import PostDetail from './pages/PostDetail';
 
-export interface sideMenuType {
-  sideMenu: boolean;
-  setSideMenu: (data: boolean) => void;
-}
 function App() {
-  const [sideMenu, setSideMenu] = useState<boolean>(false);
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <SlideMenu sideMenu={sideMenu} setSideMenu={setSideMenu} />
+      <SlideMenu />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/board" element={<Board />} />
+        <Route path="/board/newpost" element={<NewPost />} />
+        <Route path="/board/detail/:id" element={<PostDetail />} />
       </Routes>
     </BrowserRouter>
   );
