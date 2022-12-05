@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Auth, AuthFomType } from '../pages/SignUp';
+import { useSetRecoilState } from 'recoil';
+import { loginState } from '../states/recoilState';
 
 function UserAuth({
   formList,
@@ -16,6 +18,7 @@ function UserAuth({
   authInput: Auth;
   postMethod: string;
 }) {
+  const setLoggedIn = useSetRecoilState(loginState);
   const navigate = useNavigate();
   function formSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,6 +34,7 @@ function UserAuth({
           localStorage.setItem('user-id', res.data.user.id);
           alert('로그인이 완료되었습니다.');
           navigate('/');
+          setLoggedIn(true);
         } else {
           alert('회원가입이 완료되었습니다.');
           navigate('/login');
@@ -47,22 +51,20 @@ function UserAuth({
   }
 
   return (
-    <UserAuthContainer>
-      <div className="container d-flex-center">
-        <form onSubmit={formSubmit}>
-          <ul>
-            {formList.map((data: AuthFomType) => {
-              return (
-                <li key={data.id}>
-                  <label>{data.label}</label>
-                  <input type={data.type} name={data.name} onChange={inputChange} placeholder={data.placeHolder} />
-                </li>
-              );
-            })}
-          </ul>
-          <button type="submit">{buttonString}</button>
-        </form>
-      </div>
+    <UserAuthContainer className="container d-flex-center">
+      <form onSubmit={formSubmit}>
+        <ul>
+          {formList.map((data: AuthFomType) => {
+            return (
+              <li key={data.id}>
+                <label>{data.label}</label>
+                <input type={data.type} name={data.name} onChange={inputChange} placeholder={data.placeHolder} />
+              </li>
+            );
+          })}
+        </ul>
+        <button type="submit">{buttonString}</button>
+      </form>
     </UserAuthContainer>
   );
 }

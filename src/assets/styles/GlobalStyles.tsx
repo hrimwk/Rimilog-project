@@ -41,6 +41,7 @@ input{
   .d-flex-center {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   @media screen and (max-width: 640px) {
     .container{padding: 30px 16px 70px !important;}

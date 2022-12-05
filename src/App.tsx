@@ -8,20 +8,24 @@ import SignUp from './pages/SignUp';
 import Board from './pages/Board';
 import NewPost from './pages/NewPost';
 import PostDetail from './pages/PostDetail';
+import { ThemeProvider } from 'styled-components';
+import theme from './assets/styles/theme';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <SlideMenu />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/board/newpost" element={<NewPost />} />
-        <Route path="/board/detail/:id" element={<PostDetail />} />
-      </Routes>
+      <ThemeProvider theme={theme}>
+        <SlideMenu />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/board" element={<Board />} />
+          <Route path="/board/newpost" element={<NewPost />} />
+          <Route path="/board/detail/:id" element={<PostDetail />} />
+        </Routes>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

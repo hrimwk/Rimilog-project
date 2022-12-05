@@ -113,12 +113,15 @@ const SlideMenuContainer = styled.div`
   padding: 30px 10px;
   height: 100vh;
   box-shadow: -1px 5px 10px 1px #ddd;
-  background: #dde5f0;
+  background: ${(props) => props.theme.colors.mainBlue};
   border-radius: 0 10px 0 0;
   z-index: 999;
   svg {
     font-size: 26px;
-    color: #8f959f;
+    color: ${(props) => props.theme.colors.iconColor};
+    :hover {
+      color: ${(props) => props.theme.colors.darkBlue};
+    }
   }
   .white {
     white-space: nowrap;
@@ -157,11 +160,14 @@ const SlideMenuContainer = styled.div`
   }
   .logout {
     display: inline-block;
-
+    margin-right: 10px;
     svg {
       font-size: 30px;
-      color: #8f959f;
+      color: ${(props) => props.theme.colors.iconColor};
       transform: translateY(9px);
+      :hover {
+        color: ${(props) => props.theme.colors.darkBlue};
+      }
     }
   }
   .nav-icon {
@@ -181,9 +187,9 @@ const SlideMenuContainer = styled.div`
     display: inline-block;
     padding: 2px 40px 2px 0;
     margin-left: 20px;
-    color: #777d87;
+    color: ${(props) => props.theme.colors.subGray};
     :hover {
-      color: #4b5564;
+      color: ${(props) => props.theme.colors.darkBlue};
     }
   }
   @media screen and (max-width: 640px) {
@@ -229,6 +235,7 @@ const SlideMenuContainer = styled.div`
     }
     .logout {
       margin-top: 0;
+      margin-right: 10px;
       svg {
         transform: translateY(0px);
       }

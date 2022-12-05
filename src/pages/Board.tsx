@@ -2,7 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import NotLoggedIn from '../components/NotLoggedIn';
 import Pagination from '../components/Pagination';
+import { useRecoilValue } from 'recoil';
+import { loginState } from '../states/recoilState';
 
 interface list {
   id: number;
@@ -21,13 +24,13 @@ function Board() {
   const limit: number = 10;
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-
+  const loggedInValue = useRecoilValue(loginState);
   useEffect(() => {
     axios.get('http://localhost:3000/posts?_sort=id&_order=desc').then((res) => {
       setList(res.data);
     });
   }, []);
-  return (
+  return loggedInValue ? (
     <BoardContainer>
       <div className="container">
         <div className="boardWrap">
@@ -69,6 +72,8 @@ function Board() {
         </div>
       </div>
     </BoardContainer>
+  ) : (
+    <NotLoggedIn />
   );
 }
 const BoardContainer = styled.div`

@@ -3,6 +3,9 @@ import ReactQuill from 'react-quill';
 import { useMemo, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { loginState } from '../states/recoilState';
+import NotLoggedIn from '../components/NotLoggedIn';
 
 function NewPost() {
   const [content, setContent] = useState('');
@@ -14,7 +17,7 @@ function NewPost() {
   const getTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
-
+  const loggedInValue = useRecoilValue(loginState);
   const formSubmit = (e: React.FormEvent) => {
     const minutes = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes();
     const hours = new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours();
@@ -68,7 +71,7 @@ function NewPost() {
     []
   );
 
-  return (
+  return loggedInValue ? (
     <NewPostContainer>
       <div className="container">
         <form onSubmit={formSubmit}>
@@ -89,6 +92,8 @@ function NewPost() {
         </form>
       </div>
     </NewPostContainer>
+  ) : (
+    <NotLoggedIn />
   );
 }
 const NewPostContainer = styled.div`
