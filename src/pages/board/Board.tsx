@@ -2,10 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import NotLoggedIn from '../components/NotLoggedIn';
-import Pagination from '../components/Pagination';
+import NotLoggedIn from '../../components/common/NotLoggedIn';
+import Pagination from '../../components/common/Pagination';
 import { useRecoilValue } from 'recoil';
-import { loginState } from '../states/recoilState';
+import { loginState } from '../../states/recoilState';
 
 interface list {
   id: number;
@@ -18,15 +18,16 @@ function Board() {
   const month = new Date().getMonth() + 1 < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
   const date = new Date().getDate() + 1 < 9 ? '0' + new Date().getDate() : new Date().getDate() + 1;
   const today = `${new Date().getFullYear()}-${month}-${date}`;
-
   const navigate = useNavigate();
   const [list, setList] = useState<list[]>([]);
   const limit: number = 10;
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const loggedInValue = useRecoilValue(loginState);
+  const userId = localStorage.getItem('user-id');
+
   useEffect(() => {
-    axios.get('http://localhost:3000/posts?_sort=id&_order=desc').then((res) => {
+    axios.get(`http://localhost:3000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {
       setList(res.data);
     });
   }, []);
@@ -40,25 +41,29 @@ function Board() {
             <li className="list-title">Title</li>
             <li className="date">date</li>
           </ul>
-          <ul>
-            {list.slice(offset, offset + limit).map((data, idx) => {
-              return (
-                <li key={data.id}>
-                  <ul className="list-body d-flex">
-                    <li className="num">{list.length - idx - offset}</li>
-                    <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
-                      {data.title}
-                    </li>
-                    {today === data.date ? (
-                      <li className="date">{data.time}</li>
-                    ) : (
-                      <li className="date">{data.date}</li>
-                    )}
-                  </ul>
-                </li>
-              );
-            })}
-          </ul>
+          {list.length === 0 ? (
+            <p>no posts</p>
+          ) : (
+            <ul>
+              {list.slice(offset, offset + limit).map((data, idx) => {
+                return (
+                  <li key={data.id}>
+                    <ul className="list-body d-flex">
+                      <li className="num">{list.length - idx - offset}</li>
+                      <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
+                        {data.title}
+                      </li>
+                      {today === data.date ? (
+                        <li className="date">{data.time}</li>
+                      ) : (
+                        <li className="date">{data.date}</li>
+                      )}
+                    </ul>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <div className="pagination-area">
             <button
               className="new-post"

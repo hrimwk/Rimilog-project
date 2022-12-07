@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NotLoggedIn from '../components/NotLoggedIn';
+import NotLoggedIn from '../components/common/NotLoggedIn';
 import { ImUser } from 'react-icons/im';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { loginState, nickNameState } from '../states/recoilState';

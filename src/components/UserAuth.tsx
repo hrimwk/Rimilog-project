@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Auth, AuthFomType } from '../pages/SignUp';
 import { useSetRecoilState } from 'recoil';
@@ -63,7 +63,17 @@ function UserAuth({
             );
           })}
         </ul>
+
         <button type="submit">{buttonString}</button>
+        {postMethod === 'login' ? (
+          <span className="ask">
+            혹시 회원이 아니신가요?&nbsp;<Link to="/signup">회원가입</Link>
+          </span>
+        ) : (
+          <span className="ask">
+            혹시 회원이신가요?&nbsp;<Link to="/login">로그인</Link>
+          </span>
+        )}
       </form>
     </UserAuthContainer>
   );
@@ -93,6 +103,17 @@ const UserAuthContainer = styled.div`
     width: 100%;
     border: none;
     border-radius: 5px;
+  }
+  .ask {
+    display: block;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    a {
+      text-decoration: underline;
+      color: ${(props) => props.theme.colors.pointBlue};
+    }
   }
 `;
 export default UserAuth;

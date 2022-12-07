@@ -1,11 +1,15 @@
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+import { atom } from 'recoil';
+
 const loginState = atom({
   key: 'loginState',
   default: false,
 });
-
 const slideMenuState = atom({
   key: 'slideMenuState',
   default: false,
 });
-export { loginState, slideMenuState };
+const nickNameState = atom({
+  key: 'nickNameState',
+  default: '',
+});
+export { loginState, slideMenuState, nickNameState };

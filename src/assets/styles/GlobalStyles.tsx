@@ -4,6 +4,8 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
+  
+
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -18,6 +20,7 @@ input{
     outline: none;
   }
 }
+
   body {
     margin: 0 auto;
     min-height: 100vh;
@@ -25,6 +28,14 @@ input{
     font-family: 'Noto Sans KR', sans-serif;
     max-width: 1440px;
   } 
+  h1{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  h2{
+    font-size: 24px;
+    font-weight: bold;
+  }
   h1.title{
     font-size: 20px;
     margin-bottom: 30px;
@@ -33,6 +44,9 @@ input{
   .container{
     padding: 30px 30px 30px 90px !important;
     min-height: 100vh;
+  }
+  .mb-10{
+    margin-bottom: ;
   }
   .d-flex {
     display: flex;
@@ -44,7 +58,8 @@ input{
     justify-content: center;
   }
   @media screen and (max-width: 640px) {
-    .container{padding: 30px 16px 70px !important;}
+    .container{padding: 30px 16px 70px !important;
+    height:100vh;}
     .d-flex {
       flex-direction: column !important;
     }

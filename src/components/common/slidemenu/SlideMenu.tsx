@@ -1,33 +1,43 @@
 import styled from 'styled-components';
 import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
-import { CiLogin, CiLogout } from 'react-icons/ci';
+
 import { HiUserAdd } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useRef } from 'react';
-import { loginState, slideMenuState } from '../states/recoilState';
-import { useRecoilState } from 'recoil';
+import { slideMenuState, nickNameState, loginState } from '../../../states/recoilState';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import axios from 'axios';
+import UserAuthIcon from './UserAuthIcon';
 
 function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
-  const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
   const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
-  // const loginToken = localStorage.getItem('login-token');
+
+  const isLoggedIn = useRecoilValue(loginState);
+  const nickNameValue = useRecoilValue(nickNameState);
+  const setNickName = useSetRecoilState(nickNameState);
+
+  const token = localStorage.getItem('login-token');
+  const userId = localStorage.getItem('user-id');
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
     { icon: <ImClipboard />, text: 'Board', link: '/board', id: 2 },
-    { icon: <ImCogs />, text: 'Edit', link: '/', id: 3 },
+    { icon: <ImCogs />, text: 'Edit', link: '/edit', id: 3 },
   ];
 
-  const askLogout = () => {
-    let isLogout = confirm('로그아웃하시겠습니까?');
-    if (isLogout === true) {
-      localStorage.removeItem('login-token');
-      localStorage.removeItem('user-id');
-      alert('로그아웃 되었습니다.');
-      setLoggedIn(false);
-    }
-  };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setNickName(res.data.nick_name);
+      });
+  }, [nickNameValue, isLoggedIn]);
+
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -58,15 +68,13 @@ function SlideMenu() {
                 <div className="user flex-center">
                   <ImUser />
                 </div>
-                <span className="nav-text">User</span>
+                <span className="user-text">{nickNameValue}</span>
               </div>
             ) : (
               <Link to="/signup">
                 <div className="user flex-center">
-                  {/* <ImUser /> */}
                   <HiUserAdd />
                 </div>
-                {/* <span className="nav-text">User</span> */}
                 <span className="nav-text">Signup</span>
               </Link>
             )}
@@ -85,23 +93,7 @@ function SlideMenu() {
               })}
             </ul>
           </nav>
-          <div className="white mt-30" onClick={clickIcon}>
-            {isLoggedIn ? (
-              <div onClick={askLogout}>
-                <div className="logout">
-                  <CiLogout />
-                </div>
-                <span className="nav-text">Logout</span>
-              </div>
-            ) : (
-              <Link to="/login">
-                <div className="logout">
-                  <CiLogin />
-                </div>
-                <span className="nav-text">Login</span>
-              </Link>
-            )}
-          </div>
+          <UserAuthIcon clickIcon={clickIcon} />
         </div>
       </SlideMenuContainer>
     </>
@@ -142,6 +134,12 @@ const SlideMenuContainer = styled.div`
   }
   .slideOn {
     width: 150px !important;
+  }
+  .user-text {
+    display: inline-block;
+    padding: 2px 40px 2px 0;
+    margin-left: 20px;
+    color: ${(props) => props.theme.colors.subGray};
   }
   .user {
     display: inline-block;
@@ -218,6 +216,9 @@ const SlideMenuContainer = styled.div`
       width: 100% !important;
       height: 40px;
       overflow: hidden;
+    }
+    .user-text {
+      display: none !important;
     }
     .nav-icon {
       :nth-last-child(1) {
