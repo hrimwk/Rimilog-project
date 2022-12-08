@@ -6,51 +6,45 @@ import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
 import { useNavigate, useParams } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
+import { userId } from '../../assets/utils/common';
+import PostEdit from '../../components/common/detail/PostEdit';
 
+interface Postcontent {
+  title: string;
+  body: string;
+  date: string;
+  userId: string;
+  time: string;
+  id: number | null;
+}
 function PostDetai() {
-  const [postContent, setContent] = useState([{ title: '', body: '', date: '', userId: '', time: '', id: '' }]);
+  const [postContent, setContent] = useState<Postcontent>({
+    title: '',
+    body: '',
+    date: '',
+    userId: '',
+    time: '',
+    id: null,
+  });
   const [editContent, setEditContent] = useState<string>('');
   const [editTitle, setEditTitle] = useState<string>('');
   const [edit, setEdit] = useState(false);
   const loggedInValue = useRecoilValue(loginState);
   const params = useParams();
   const postId = params.id;
-  const navigate = useNavigate();
 
-  const clickEdit = () => {
-    setEdit(true);
-    setEditContent(postContent.body);
-    setEditTitle(postContent.title);
-  };
-  const contentTitleChange = (e: React.ChangeEvent) => {
+  const contentTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditTitle(e.target.value);
   };
-  const clickConfirm = () => {
-    const data = {
-      title: editTitle,
-      body: editContent,
-    };
-    axios.patch(`http://localhost:3000/posts/${postId}`, data).then((res) => {
-      console.log(res);
-      setEdit(false);
-    });
-  };
-  const clickDelete = () => {
-    confirm('삭제하시겠습니까?') &&
-      axios.delete(`http://localhost:3000/posts/${postId}`).then((res) => {
-        console.log(res);
-        navigate('/board');
-      });
-  };
+  function toHtml() {
+    return { __html: postContent.body };
+  }
+
   useEffect(() => {
     axios.get(`http://localhost:3000/posts/${postId}`, {}).then((res) => {
       setContent(res.data);
     });
   }, [edit]);
-
-  function toHtml() {
-    return { __html: postContent.body };
-  }
 
   return loggedInValue ? (
     <NewPostContainer>
@@ -59,23 +53,19 @@ function PostDetai() {
           <p className="mb-10 wrriten-time">
             Written day : <span>{postContent.time}</span>
           </p>
-          <div className="post-option-area d-flex">
-            {edit ? (
-              <>
-                <span onClick={clickConfirm}>confirm</span>
-                <span
-                  onClick={() => {
-                    setEdit(false);
-                  }}>
-                  cancel
-                </span>
-              </>
-            ) : (
-              <span onClick={clickEdit}>edit</span>
-            )}
-            <span onClick={clickDelete}>delete</span>
-          </div>
+          {userId === postContent.userId && (
+            <PostEdit
+              edit={edit}
+              setEdit={setEdit}
+              editTitle={editTitle}
+              editContent={editContent}
+              setEditContent={setEditContent}
+              setEditTitle={setEditTitle}
+              postContent={postContent}
+            />
+          )}
         </div>
+
         {edit ? (
           <input className="post-title edit" defaultValue={postContent.title} onChange={contentTitleChange} />
         ) : (
@@ -122,18 +112,6 @@ const NewPostContainer = styled.div`
     h1,
     h2 {
       margin-bottom: 10px;
-    }
-  }
-  .post-option-area {
-    span {
-      flex-grow: 1;
-      display: block;
-      margin-right: 10px;
-      font-size: 14px;
-      cursor: pointer;
-      &:nth-last-child(1) {
-        margin-right: 0px;
-      }
     }
   }
   @media screen and (max-width: 640px) {

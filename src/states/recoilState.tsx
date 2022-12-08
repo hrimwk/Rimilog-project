@@ -12,4 +12,5 @@ const nickNameState = atom({
   key: 'nickNameState',
   default: '',
 });
+
 export { loginState, slideMenuState, nickNameState };

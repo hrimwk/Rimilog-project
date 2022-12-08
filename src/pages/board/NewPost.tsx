@@ -6,6 +6,7 @@ import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
 import { useNavigate } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
+import { time, today } from '../../assets/utils/common';
 
 function NewPost() {
   const [content, setContent] = useState('');
@@ -15,15 +16,9 @@ function NewPost() {
   const getTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
-  const month = new Date().getMonth() + 1 < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
-  const date = new Date().getDate() + 1 < 9 ? '0' + new Date().getDate() : new Date().getDate() + 1;
-  const today = `${new Date().getFullYear()}-${month}-${date}`;
+
   const loggedInValue = useRecoilValue(loginState);
   const formSubmit = (e: React.FormEvent) => {
-    const minutes = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes();
-    const hours = new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours();
-    const time = `${hours}:${minutes}`;
-
     e.preventDefault();
     const data = {
       title: title,

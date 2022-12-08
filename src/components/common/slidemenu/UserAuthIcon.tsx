@@ -3,14 +3,14 @@ import { loginState } from '../../../states/recoilState';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { token } from '../../../assets/utils/common';
 
 type PropsType = {
   clickIcon: (e: React.MouseEvent<HTMLElement>) => void;
 };
+
 function UserAuthIcon({ clickIcon }: PropsType) {
   const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
-  const token = localStorage.getItem('login-token');
-
   const askLogout = () => {
     let isLogout = confirm('로그아웃하시겠습니까?');
     if (isLogout === true) {

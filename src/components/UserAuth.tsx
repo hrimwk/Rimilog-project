@@ -1,23 +1,20 @@
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Auth, AuthFomType } from '../pages/SignUp';
+
 import { useSetRecoilState } from 'recoil';
 import { loginState } from '../states/recoilState';
+import { Auth, AuthFomType } from '../assets/utils/signup';
 
-function UserAuth({
-  formList,
-  buttonString,
-  setAuth,
-  authInput,
-  postMethod,
-}: {
+type PropsType = {
   formList: AuthFomType[];
   buttonString: string;
   setAuth: (data: Auth) => void;
   authInput: Auth;
   postMethod: string;
-}) {
+};
+
+function UserAuth({ formList, buttonString, setAuth, authInput, postMethod }: PropsType) {
   const setLoggedIn = useSetRecoilState(loginState);
   const navigate = useNavigate();
   function formSubmit(e: React.FormEvent) {

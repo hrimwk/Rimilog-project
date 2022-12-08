@@ -6,6 +6,7 @@ import NotLoggedIn from '../../components/common/NotLoggedIn';
 import Pagination from '../../components/common/Pagination';
 import { useRecoilValue } from 'recoil';
 import { loginState } from '../../states/recoilState';
+import { today, userId } from '../../assets/utils/common';
 
 interface list {
   id: number;
@@ -15,16 +16,12 @@ interface list {
   time?: string;
 }
 function Board() {
-  const month = new Date().getMonth() + 1 < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
-  const date = new Date().getDate() + 1 < 9 ? '0' + new Date().getDate() : new Date().getDate() + 1;
-  const today = `${new Date().getFullYear()}-${month}-${date}`;
   const navigate = useNavigate();
   const [list, setList] = useState<list[]>([]);
   const limit: number = 10;
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const loggedInValue = useRecoilValue(loginState);
-  const userId = localStorage.getItem('user-id');
 
   useEffect(() => {
     axios.get(`http://localhost:3000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {

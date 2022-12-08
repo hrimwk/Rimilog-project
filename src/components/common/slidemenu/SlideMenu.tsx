@@ -8,17 +8,15 @@ import { slideMenuState, nickNameState, loginState } from '../../../states/recoi
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import UserAuthIcon from './UserAuthIcon';
+import { token, userId } from '../../../assets/utils/common';
 
 function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
-  const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
 
+  const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
   const isLoggedIn = useRecoilValue(loginState);
   const nickNameValue = useRecoilValue(nickNameState);
   const setNickName = useSetRecoilState(nickNameState);
-
-  const token = localStorage.getItem('login-token');
-  const userId = localStorage.getItem('user-id');
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },

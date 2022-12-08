@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { loginState, nickNameState } from '../states/recoilState';
 import styled from 'styled-components';
 import axios from 'axios';
+import { token, userId } from '../assets/utils/common';
 
 function EditUser() {
   const loggedInValue = useRecoilValue(loginState);
@@ -13,9 +14,6 @@ function EditUser() {
   const writeNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser(e.target.value);
   };
-
-  const userId = localStorage.getItem('user-id');
-  const token = localStorage.getItem('login-token');
 
   const editSubmit = (e: React.FormEvent) => {
     e.preventDefault();

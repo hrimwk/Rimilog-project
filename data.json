@@ -44,8 +44,8 @@
       "id": 2
     },
     {
-      "title": "redux-saga도 사용해봅시다",
-      "body": "나중엔 redux-saga를 사용해서 비동기 작업을 처리하는 방법도 배워볼 거예요.",
+      "title": "redux-saga도 사용해봅시다!",
+      "body": "",
       "date": "2022-12-03",
       "time": "20:00",
       "userId": "64mIBNh",
@@ -68,16 +68,16 @@
       "id": 6
     },
     {
-      "title": "sss",
-      "body": "<p>qqq</p>",
+      "title": "기분이 좋은 하루다",
+      "body": "<p>푹 쉴 수 있어서 좋았다</p><p><br></p>",
       "date": "2022-12-06",
       "time": "16:54",
       "userId": "64mIBNh",
       "id": 7
     },
     {
-      "title": "오늘은 곧 잘거야...",
-      "body": "<p>잠을 잘 자야 건강하다</p>",
+      "title": "오늘은 날이 좋다",
+      "body": "<p>좋은 날씨는 좋아</p><p>별로 안추워</p>",
       "date": "2022-12-07",
       "time": "00:08",
       "userId": "64mIBNh",

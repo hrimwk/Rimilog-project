@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Home from './pages/Home';
 import SlideMenu from './components/common/slidemenu/SlideMenu';
-import { useState } from 'react';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Board from './pages/board/Board';
