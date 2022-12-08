@@ -25,16 +25,17 @@ function SlideMenu() {
   ];
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setNickName(res.data.nick_name);
-      });
-  }, [nickNameValue, isLoggedIn]);
+    userId &&
+      axios
+        .get(`http://localhost:3000/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setNickName(res.data.nick_name);
+        });
+  }, []);
 
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {

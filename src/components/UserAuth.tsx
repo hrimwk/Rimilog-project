@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useSetRecoilState } from 'recoil';
-import { loginState } from '../states/recoilState';
+import { loginState, nickNameState } from '../states/recoilState';
 import { Auth, AuthFomType } from '../assets/utils/signup';
 
 type PropsType = {
@@ -16,7 +16,9 @@ type PropsType = {
 
 function UserAuth({ formList, buttonString, setAuth, authInput, postMethod }: PropsType) {
   const setLoggedIn = useSetRecoilState(loginState);
+  const setNickName = useSetRecoilState(nickNameState);
   const navigate = useNavigate();
+
   function formSubmit(e: React.FormEvent) {
     e.preventDefault();
     const data = {
@@ -29,9 +31,12 @@ function UserAuth({ formList, buttonString, setAuth, authInput, postMethod }: Pr
         if (postMethod === 'login') {
           localStorage.setItem('login-token', res.data.accessToken);
           localStorage.setItem('user-id', res.data.user.id);
+          setNickName(res.data.user.nick_name);
+          setLoggedIn(true);
+          console.log(res.data.user.nick_name);
+
           alert('로그인이 완료되었습니다.');
           navigate('/');
-          setLoggedIn(true);
         } else {
           alert('회원가입이 완료되었습니다.');
           navigate('/login');

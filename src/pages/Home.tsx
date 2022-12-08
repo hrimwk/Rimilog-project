@@ -5,21 +5,25 @@ import MainPostList from '../components/home/MainPostList';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { useRecoilValue } from 'recoil';
 import { loginState, nickNameState } from '../states/recoilState';
+import { token, userId } from '../assets/utils/common';
 
 function Home() {
   const [weeklyBest, setWeekly] = useState([]);
-  const [mainData, setData] = useState([]);
+  const [latestPost, setLatestPost] = useState([]);
 
   const loggedInValue = useRecoilValue(loginState);
   const nickNameValue = useRecoilValue(nickNameState);
 
+  const PICK_LIST = "RIMOLOG's pick";
+  const LATEST_LIST = 'Latest';
   useEffect(() => {
     axios.get('http://localhost:3000/weeklyBest').then((res) => {
       setWeekly(res.data);
     });
-    // axios.get('/data/bestComment.json').then((res) => {
-    //   setData(res.data.bestComment);
-    // });
+
+    axios.get('http://localhost:3000/posts').then((res) => {
+      setLatestPost(res.data.slice(res.data.length - 5, res.data.length).reverse());
+    });
   }, []);
   return (
     <MainContainer>
@@ -37,7 +41,8 @@ function Home() {
           )}
         </section>
         <section className="best-area d-flex">
-          <MainPostList listData={weeklyBest} />
+          <MainPostList listData={weeklyBest} categoryTitle={PICK_LIST} />
+          <MainPostList listData={latestPost} categoryTitle={LATEST_LIST} />
         </section>
       </div>
     </MainContainer>

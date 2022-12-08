@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 import { useMemo } from 'react';
 import 'react-quill/dist/quill.snow.css';
+import { formats } from '../assets/utils/postFom';
 
 type PropsType = {
   content: string;
@@ -11,19 +12,7 @@ function PostForm({ content, setContent }: PropsType) {
   const getContent = (value: string) => {
     setContent(value);
   };
-  const formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'list',
-    'ordered',
-    'bullet',
-    'blockquote',
-    'link',
-    'code-block',
-  ];
+
   const modules = useMemo(
     () => ({
       toolbar: {

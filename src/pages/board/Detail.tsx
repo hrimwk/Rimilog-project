@@ -6,7 +6,7 @@ import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
 import { useNavigate, useParams } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
-import { userId } from '../../assets/utils/common';
+import { today, userId } from '../../assets/utils/common';
 import PostEdit from '../../components/common/detail/PostEdit';
 
 interface Postcontent {
@@ -51,7 +51,8 @@ function PostDetai() {
       <div className="container">
         <div className="d-flex post-header">
           <p className="mb-10 wrriten-time">
-            Written day : <span>{postContent.time}</span>
+            Written day :{' '}
+            {postContent.date === today ? <span>{postContent.time}</span> : <span>{postContent.date}</span>}
           </p>
           {userId === postContent.userId && (
             <PostEdit

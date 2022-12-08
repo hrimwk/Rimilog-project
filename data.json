@@ -3,7 +3,7 @@
     {
       "email": "test1@email.com",
       "password": "$2a$10$Wcz8W6ofLqUf8Q.S4IhsceZvX12w8Bq1uJCcMv6IoXQoDm7BwkoHm",
-      "nick_name": "시험",
+      "nick_name": "hola",
       "id": "zH7jAYV"
     },
     {
@@ -82,7 +82,48 @@
       "time": "00:08",
       "userId": "64mIBNh",
       "id": 8
+    },
+    {
+      "title": "오늘은 캐롤을 들었다",
+      "body": "<p>크리스마스가 얼마 남지 않았다.</p>",
+      "date": "2022-12-9",
+      "time": "22:07",
+      "userId": "zH7jAYV",
+      "id": 9
     }
   ],
-  "weeklyBest": []
+  "weeklyBest": [
+    {
+      "title": "오늘은 캐롤을 들었다",
+      "body": "<p>크리스마스가 얼마 남지 않았다.</p>",
+      "date": "2022-12-9",
+      "time": "22:07",
+      "userId": "zH7jAYV",
+      "id": 9
+    },
+    {
+      "title": "오늘은 날이 좋다",
+      "body": "<p>좋은 날씨는 좋아</p><p>별로 안추워</p>",
+      "date": "2022-12-07",
+      "time": "00:08",
+      "userId": "64mIBNh",
+      "id": 8
+    },
+    {
+      "title": "redux-thunk를 사용해봅시다",
+      "body": "redux-thunk를 사용해서 비동기 작업을 처리해봅시다!",
+      "date": "2022-12-03",
+      "time": "20:00",
+      "userId": "64mIBNh",
+      "id": 2
+    },
+    {
+      "title": "오늘은 조금 따뜻하다",
+      "body": "<p>날이 비교적 따뜻한 오늘!</p><h2>내일은 더 춥나?</h2>",
+      "date": "2022-12-06",
+      "time": "16:51",
+      "writer": "64mIBNh",
+      "id": 5
+    }
+  ]
 }

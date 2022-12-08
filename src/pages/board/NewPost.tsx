@@ -27,44 +27,11 @@ function NewPost() {
       time: time,
       userId: localStorage.getItem('user-id'),
     };
-    axios
-      .post('http://localhost:3000/posts', data, {
-        // headers: {
-        //   Authorization:
-        //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxMUBlbWFpbC5jb20iLCJpYXQiOjE2NzAxMzIzNjQsImV4cCI6MTY3MDEzNTk2NCwic3ViIjoiNjRtSUJOaCJ9.viAl2g-bEn4bFkEShVb2Dnf38hUREliqzgdTDL5BjyY',
-        // },
-      })
-      .then((res) => {
-        alert('게시글 작성이 완료되었습니다.');
-        navigate(`/board/detail/${res.data.id}`);
-      });
+    axios.post('http://localhost:3000/posts', data, {}).then((res) => {
+      alert('게시글 작성이 완료되었습니다.');
+      navigate(`/board/detail/${res.data.id}`);
+    });
   };
-  const formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'list',
-    'ordered',
-    'bullet',
-    'blockquote',
-    'link',
-    'code-block',
-  ];
-  const modules = useMemo(
-    () => ({
-      toolbar: {
-        container: [
-          [{ header: 1 }, { header: 2 }],
-          ['bold', 'italic', 'underline', 'strike'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
-          ['blockquote', 'link', 'code-block'],
-        ],
-      },
-    }),
-    []
-  );
 
   return loggedInValue ? (
     <NewPostContainer>

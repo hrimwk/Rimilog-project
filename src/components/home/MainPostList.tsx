@@ -6,20 +6,21 @@ interface listData {
   title: string;
 }
 type PropsType = {
+  categoryTitle: string;
   listData: listData[];
 };
 
-function MainPostList({ listData }: PropsType) {
+function MainPostList({ listData, categoryTitle }: PropsType) {
   const navigate = useNavigate();
   return (
     <MainPostListContiner>
-      <h1 className="title">RIMOLOG's pick</h1>
+      <h1 className="title">{categoryTitle}</h1>
       <ul>
-        {listData.map((data) => {
+        {listData.map((data, idx) => {
           return (
             <li key={data.id}>
               <div className="content-title d-flex">
-                <p className="num">1</p>
+                <p className="num">{idx + 1}</p>
                 <p className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
                   {data.title}
                 </p>
@@ -34,6 +35,9 @@ function MainPostList({ listData }: PropsType) {
 const MainPostListContiner = styled.div`
   flex-grow: 1;
   margin-right: 4%;
+  &:last-child {
+    margin-right: 0;
+  }
   li {
     padding: 15px 10px;
     border-bottom: 1px solid #ddd;
@@ -46,7 +50,7 @@ const MainPostListContiner = styled.div`
     width: 50px;
   }
   .list-title {
-    flex: 5 5;
+    flex: 1 1;
   }
   .list-title.body {
     cursor: pointer;
