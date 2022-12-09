@@ -4,10 +4,11 @@ import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
 import { today, userId } from '../../assets/utils/common';
 import PostEdit from '../../components/common/detail/PostEdit';
+import dompurify from 'dompurify';
 
 interface Postcontent {
   title: string;
@@ -18,6 +19,7 @@ interface Postcontent {
   id: number | null;
 }
 function PostDetai() {
+  const sanitizer = dompurify.sanitize;
   const [postContent, setContent] = useState<Postcontent>({
     title: '',
     body: '',
@@ -37,7 +39,7 @@ function PostDetai() {
     setEditTitle(e.target.value);
   };
   function toHtml() {
-    return { __html: postContent.body };
+    return { __html: sanitizer(postContent.body) };
   }
 
   useEffect(() => {

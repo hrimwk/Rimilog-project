@@ -13,7 +13,7 @@ function Home() {
   const loggedInValue = useRecoilValue(loginState);
   const nickNameValue = useRecoilValue(nickNameState);
 
-  const PICK_LIST = "RIMOLOG's pick";
+  const PICK_LIST = "RIMILOG's pick";
   const LATEST_LIST = 'Latest';
 
   useEffect(() => {

@@ -141,6 +141,9 @@ const BoardContainer = styled.div`
     }
   }
   @media screen and (max-width: 640px) {
+    .boardWrap {
+      min-height: 550px;
+    }
     .list-head {
       flex-direction: row !important;
     }
@@ -157,9 +160,6 @@ const BoardContainer = styled.div`
         text-overflow: ellipsis;
       }
     }
-  }
-  .boardWrap {
-    min-height: 550px;
   }
 `;
 export default Board;
