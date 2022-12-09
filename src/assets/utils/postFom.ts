@@ -8,7 +8,6 @@ const formats = [
   'ordered',
   'bullet',
   'blockquote',
-  'link',
   'code-block',
 ];
 

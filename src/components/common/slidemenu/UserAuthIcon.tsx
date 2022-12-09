@@ -28,12 +28,12 @@ function UserAuthIcon({ clickIcon }: PropsType) {
   return (
     <div className="white mt-30" onClick={clickIcon}>
       {isLoggedIn ? (
-        <div onClick={askLogout}>
-          <div className="logout">
+        <>
+          <div onClick={askLogout} className="logout">
             <CiLogout />
           </div>
           <span className="nav-text">Logout</span>
-        </div>
+        </>
       ) : (
         <Link to="/login">
           <div className="logout">

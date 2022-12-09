@@ -49,10 +49,10 @@ function PostDetai() {
   return loggedInValue ? (
     <NewPostContainer>
       <div className="container">
-        <div className="d-flex post-header">
-          <p className="mb-10 wrriten-time">
-            Written day :{' '}
-            {postContent.date === today ? <span>{postContent.time}</span> : <span>{postContent.date}</span>}
+        <div className="post-header">
+          <p className="wrriten-time">
+            Written day :&nbsp;
+            {postContent.date === today ? <span>today&nbsp;{postContent.time}</span> : <span>{postContent.date}</span>}
           </p>
           {userId === postContent.userId && (
             <PostEdit
@@ -86,8 +86,9 @@ function PostDetai() {
 const NewPostContainer = styled.div`
   .post-title {
     width: 100%;
-    padding: 15px 0px;
+    padding: 15px 10px;
     margin-bottom: 10px;
+    line-height: 30px;
   }
   .post-title.edit {
     padding-left: 10px;
@@ -97,6 +98,8 @@ const NewPostContainer = styled.div`
   }
 
   .post-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
   }

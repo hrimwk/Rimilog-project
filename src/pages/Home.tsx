@@ -10,21 +10,21 @@ import { token, userId } from '../assets/utils/common';
 function Home() {
   const [weeklyBest, setWeekly] = useState([]);
   const [latestPost, setLatestPost] = useState([]);
-
   const loggedInValue = useRecoilValue(loginState);
   const nickNameValue = useRecoilValue(nickNameState);
 
   const PICK_LIST = "RIMOLOG's pick";
   const LATEST_LIST = 'Latest';
+
   useEffect(() => {
     axios.get('http://localhost:3000/weeklyBest').then((res) => {
       setWeekly(res.data);
     });
-
     axios.get('http://localhost:3000/posts').then((res) => {
       setLatestPost(res.data.slice(res.data.length - 5, res.data.length).reverse());
     });
   }, []);
+
   return (
     <MainContainer>
       <div className="container">

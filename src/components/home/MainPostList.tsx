@@ -19,7 +19,7 @@ function MainPostList({ listData, categoryTitle }: PropsType) {
         {listData.map((data, idx) => {
           return (
             <li key={data.id}>
-              <div className="content-title d-flex">
+              <div className="content-title">
                 <p className="num">{idx + 1}</p>
                 <p className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
                   {data.title}
@@ -33,11 +33,19 @@ function MainPostList({ listData, categoryTitle }: PropsType) {
   );
 }
 const MainPostListContiner = styled.div`
-  flex-grow: 1;
-  margin-right: 4%;
-  &:last-child {
-    margin-right: 0;
+  flex: 1 1;
+  width: 50%;
+  &:nth-child(odd) {
+    margin: 0 10px 0 0;
   }
+  &:nth-child(even) {
+    margin: 0 0 0 10px;
+  }
+  .content-title {
+    display: flex;
+    justify-content: flex-start;
+  }
+
   li {
     padding: 15px 10px;
     border-bottom: 1px solid #ddd;
@@ -47,31 +55,28 @@ const MainPostListContiner = styled.div`
     }
   }
   .num {
-    width: 50px;
+    width: fit-content;
+    display: inline-block;
+    margin-right: 30px;
   }
   .list-title {
     flex: 1 1;
   }
   .list-title.body {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     cursor: pointer;
     :hover {
       text-decoration: underline;
     }
   }
   @media screen and (max-width: 640px) {
-    margin-right: 0;
-
-    .best-comment {
-      flex-grow: 1;
-      li {
-        .comment {
-          width: 100%;
-          margin-left: 0;
-        }
-        span {
-          margin-bottom: 15px;
-        }
-      }
+    margin: 0 0 30px 0 !important;
+    width: 100%;
+    .title {
+      margin-bottom: 10px;
     }
   }
 `;

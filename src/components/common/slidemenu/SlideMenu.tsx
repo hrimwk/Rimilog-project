@@ -14,16 +14,14 @@ function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
 
   const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
-  const isLoggedIn = useRecoilValue(loginState);
-  const nickNameValue = useRecoilValue(nickNameState);
-  const setNickName = useSetRecoilState(nickNameState);
+  const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
+  const [nickNameValue, setNickName] = useRecoilState(nickNameState);
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
     { icon: <ImClipboard />, text: 'Board', link: '/board', id: 2 },
     { icon: <ImCogs />, text: 'Edit', link: '/edit', id: 3 },
   ];
-
   useEffect(() => {
     userId &&
       axios
@@ -34,6 +32,13 @@ function SlideMenu() {
         })
         .then((res) => {
           setNickName(res.data.nick_name);
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('login-token');
+            localStorage.removeItem('user-id');
+            setLoggedIn(false);
+          }
         });
   }, []);
 
@@ -235,7 +240,7 @@ const SlideMenuContainer = styled.div`
     }
     .logout {
       margin-top: 0;
-      margin-right: 10px;
+      margin-right: 0;
       svg {
         transform: translateY(0px);
       }

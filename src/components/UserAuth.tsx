@@ -31,11 +31,9 @@ function UserAuth({ formList, buttonString, setAuth, authInput, postMethod }: Pr
         if (postMethod === 'login') {
           localStorage.setItem('login-token', res.data.accessToken);
           localStorage.setItem('user-id', res.data.user.id);
-          setNickName(res.data.user.nick_name);
           setLoggedIn(true);
-          console.log(res.data.user.nick_name);
-
           alert('로그인이 완료되었습니다.');
+          setNickName(res.data.user.nick_name);
           navigate('/');
         } else {
           alert('회원가입이 완료되었습니다.');

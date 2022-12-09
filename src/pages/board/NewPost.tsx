@@ -39,7 +39,11 @@ function NewPost() {
         <form onSubmit={formSubmit}>
           <h1 className="title">NEW POST</h1>
           <p className="mb-10">
-            Written day : <span>{today}</span>
+            Written day :{' '}
+            <span>
+              {today}&nbsp;
+              {time}
+            </span>
           </p>
           <input className="post-title" type="text" placeholder="제목을 입력해주세요." onChange={getTitle} />
           <PostForm content={content} setContent={setContent} />

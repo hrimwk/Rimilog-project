@@ -159,23 +159,7 @@ const BoardContainer = styled.div`
     }
   }
   .boardWrap {
-    min-height: 650px;
+    min-height: 550px;
   }
-  /* .num {
-    flex: 0 0;
-  }
-  .list-title {
-    flex: 0 0;
-
-  }
-  .writer {
-    flex: 0 0;
-  }
-  .date {
-    flex: 0 0;
-  }
-  .category {
-    flex: 0 0;
-  } */
 `;
 export default Board;

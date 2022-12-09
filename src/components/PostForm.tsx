@@ -20,7 +20,7 @@ function PostForm({ content, setContent }: PropsType) {
           [{ header: 1 }, { header: 2 }],
           ['bold', 'italic', 'underline', 'strike'],
           [{ list: 'ordered' }, { list: 'bullet' }],
-          ['blockquote', 'link', 'code-block'],
+          ['blockquote', 'code-block'],
         ],
       },
     }),
@@ -52,12 +52,16 @@ const PostContainer = styled.div`
     border-color: #ddd !important;
     border-radius: 0 0 10px 10px;
   }
+
   .ql-editor {
     font-size: 14px;
   }
   @media screen and (max-width: 640px) {
     .ql-container {
       height: 380px;
+    }
+    .ql-toolbar button {
+      width: 26px;
     }
   }
 `;

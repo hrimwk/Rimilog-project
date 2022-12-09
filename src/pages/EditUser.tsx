@@ -90,6 +90,10 @@ const EditUserContainer = styled.div`
       width: 100%;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
+      :hover {
+        background: #ddd;
+      }
     }
   }
 `;

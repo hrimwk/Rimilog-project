@@ -47,7 +47,7 @@ function PostEdit({ edit, setEdit, editTitle, editContent, setEditContent, setEd
   };
 
   return (
-    <EditContainer className="d-flex">
+    <EditContainer>
       {edit ? (
         <>
           <span onClick={clickConfirm}>confirm</span>
@@ -66,6 +66,7 @@ function PostEdit({ edit, setEdit, editTitle, editContent, setEditContent, setEd
   );
 }
 const EditContainer = styled.div`
+  display: flex;
   span {
     flex-grow: 1;
     display: block;
