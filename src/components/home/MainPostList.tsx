@@ -10,7 +10,8 @@ type PropsType = {
   listData: listData[];
 };
 
-function MainPostList({ listData, categoryTitle }: PropsType) {
+function MainPostList(props: PropsType) {
+  const { listData, categoryTitle } = props;
   const navigate = useNavigate();
   return (
     <MainPostListContiner>

@@ -9,7 +9,8 @@ type PropsType = {
   clickIcon: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
-function UserAuthIcon({ clickIcon }: PropsType) {
+function UserAuthIcon(props: PropsType) {
+  const { clickIcon } = props;
   const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
   const askLogout = () => {
     let isLogout = confirm('로그아웃하시겠습니까?');

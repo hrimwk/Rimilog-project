@@ -8,7 +8,9 @@ type PropsType = {
   content: string;
   setContent: (data: string) => void;
 };
-function PostForm({ content, setContent }: PropsType) {
+function PostForm(props: PropsType) {
+  const { content, setContent } = props;
+
   const getContent = (value: string) => {
     setContent(value);
   };

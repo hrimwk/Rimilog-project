@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { loginState } from '../../states/recoilState';

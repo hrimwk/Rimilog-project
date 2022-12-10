@@ -14,7 +14,9 @@ type PropsType = {
   postMethod: string;
 };
 
-function UserAuth({ formList, buttonString, setAuth, authInput, postMethod }: PropsType) {
+function UserAuth(props: PropsType) {
+  const { formList, buttonString, setAuth, authInput, postMethod } = props;
+
   const setLoggedIn = useSetRecoilState(loginState);
   const setNickName = useSetRecoilState(nickNameState);
   const navigate = useNavigate();

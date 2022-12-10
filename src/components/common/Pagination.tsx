@@ -5,7 +5,9 @@ type PropsType = {
   page: number;
   setPage: (data: number) => void;
 };
-function Pagination({ total, limit, page, setPage }: PropsType) {
+function Pagination(props: PropsType) {
+  const { total, limit, page, setPage } = props;
+
   const numPages = Math.ceil(total / limit);
   return (
     <Nav>

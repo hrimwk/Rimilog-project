@@ -20,7 +20,8 @@ type PropsType = {
   postContent: Postcontent;
 };
 
-function PostEdit({ edit, setEdit, editTitle, editContent, setEditContent, setEditTitle, postContent }: PropsType) {
+function PostEdit(props: PropsType) {
+  const { edit, setEdit, editTitle, editContent, setEditContent, setEditTitle, postContent } = props;
   const navigate = useNavigate();
   const params = useParams();
   const postId = params.id;
