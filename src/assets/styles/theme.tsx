@@ -4,8 +4,9 @@ const colors = {
   mainBlue: '#dde5f0',
   darkBlue: '#4b5564',
   pointBlue: '#3370cb',
+  paleBlue: '#f7faff',
   iconColor: '#8f959f',
-  subIvory: '#ebe6d7',
+  subIvory: '#fdf3eb',
   subGray: '#777d87',
 };
 

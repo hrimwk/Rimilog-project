@@ -39,7 +39,7 @@ function NewPost() {
         <form onSubmit={formSubmit}>
           <h1 className="title">NEW POST</h1>
           <p className="mb-10">
-            Written day :{' '}
+            Written day :
             <span>
               {today}&nbsp;
               {time}

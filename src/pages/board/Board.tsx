@@ -18,9 +18,9 @@ interface list {
 function Board() {
   const navigate = useNavigate();
   const [list, setList] = useState<list[]>([]);
-  const limit: number = 10;
+  const LIMIT: number = 10;
   const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
+  const offset = (page - 1) * LIMIT;
   const loggedInValue = useRecoilValue(loginState);
 
   useEffect(() => {
@@ -29,48 +29,46 @@ function Board() {
     });
   }, []);
   return loggedInValue ? (
-    <BoardContainer>
-      <div className="container">
-        <div className="boardWrap">
-          <h1 className="title">BOARD</h1>
-          <ul className="list-head d-flex">
-            <li className="num">No</li>
-            <li className="list-title">Title</li>
-            <li className="date">date</li>
+    <BoardContainer className="container">
+      <div className="boardWrap">
+        <h1 className="title">BOARD</h1>
+        <ul className="list-head d-flex">
+          <li className="num">No</li>
+          <li className="list-title">Title</li>
+          <li className="date">date</li>
+        </ul>
+        {list.length === 0 ? (
+          <p>no posts</p>
+        ) : (
+          <ul>
+            {list.slice(offset, offset + LIMIT).map((data, idx) => {
+              return (
+                <li key={data.id}>
+                  <ul className="list-body d-flex">
+                    <li className="num">{list.length - idx - offset}</li>
+                    <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
+                      {data.title}
+                    </li>
+                    {today === data.date ? (
+                      <li className="date">{data.time}</li>
+                    ) : (
+                      <li className="date">{data.date}</li>
+                    )}
+                  </ul>
+                </li>
+              );
+            })}
           </ul>
-          {list.length === 0 ? (
-            <p>no posts</p>
-          ) : (
-            <ul>
-              {list.slice(offset, offset + limit).map((data, idx) => {
-                return (
-                  <li key={data.id}>
-                    <ul className="list-body d-flex">
-                      <li className="num">{list.length - idx - offset}</li>
-                      <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
-                        {data.title}
-                      </li>
-                      {today === data.date ? (
-                        <li className="date">{data.time}</li>
-                      ) : (
-                        <li className="date">{data.date}</li>
-                      )}
-                    </ul>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          <div className="pagination-area">
-            <button
-              className="new-post"
-              onClick={() => {
-                navigate('newpost');
-              }}>
-              new post
-            </button>
-            <Pagination total={list.length} limit={limit} page={page} setPage={setPage} />
-          </div>
+        )}
+        <div className="pagination-area">
+          <button
+            className="new-post"
+            onClick={() => {
+              navigate('newpost');
+            }}>
+            new post
+          </button>
+          <Pagination total={list.length} limit={LIMIT} page={page} setPage={setPage} />
         </div>
       </div>
     </BoardContainer>
@@ -86,7 +84,7 @@ const BoardContainer = styled.div`
   }
   .list-head {
     padding: 10px;
-    background: #f3f5f8;
+    background: ${(props) => props.theme.colors.paleBlue};
     border-radius: 10px;
     li {
       padding: 5px;

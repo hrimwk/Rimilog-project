@@ -5,7 +5,6 @@ import MainPostList from '../components/home/MainPostList';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { useRecoilValue } from 'recoil';
 import { loginState, nickNameState } from '../states/recoilState';
-import { token, userId } from '../assets/utils/common';
 
 function Home() {
   const [weeklyBest, setWeekly] = useState([]);
@@ -26,25 +25,23 @@ function Home() {
   }, []);
 
   return (
-    <MainContainer>
-      <div className="container">
-        <section className="welcome">
-          <h1 className="greeting">
-            Hello {loggedInValue && <span className="point-color">{nickNameValue}</span>}&nbsp;
-            <MdOutlineWavingHand />
-            &nbsp;&nbsp; Welcome to RIMILOG
-          </h1>
-          {loggedInValue ? (
-            <p className="app-info">Are you having a good day? Record your day with RIMILOG</p>
-          ) : (
-            <p className="app-info">RIMILOG is a web application where you can keep a diary every day</p>
-          )}
-        </section>
-        <section className="best-area d-flex">
-          <MainPostList listData={weeklyBest} categoryTitle={PICK_LIST} />
-          <MainPostList listData={latestPost} categoryTitle={LATEST_LIST} />
-        </section>
-      </div>
+    <MainContainer className="container">
+      <section className="welcome">
+        <h1 className="greeting">
+          Hello {loggedInValue && <span className="point-color">{nickNameValue}</span>}&nbsp;
+          <MdOutlineWavingHand />
+          &nbsp;&nbsp; Welcome to RIMILOG
+        </h1>
+        {loggedInValue ? (
+          <p className="app-info">Are you having a good day? Record your day with RIMILOG</p>
+        ) : (
+          <p className="app-info">RIMILOG is a web application where you can keep a diary every day</p>
+        )}
+      </section>
+      <section className="best-area d-flex">
+        <MainPostList listData={weeklyBest} categoryTitle={PICK_LIST} />
+        <MainPostList listData={latestPost} categoryTitle={LATEST_LIST} />
+      </section>
     </MainContainer>
   );
 }
@@ -53,7 +50,7 @@ const MainContainer = styled.div`
     padding: 50px;
     margin-bottom: 50px;
     background: ${(props) => props.theme.colors.mainBlue};
-    border-radius: 5px;
+    border-radius: 10px;
     .point-color {
       color: ${(props) => props.theme.colors.pointBlue};
     }

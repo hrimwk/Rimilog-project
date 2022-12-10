@@ -41,7 +41,7 @@ function EditUser() {
       <form onSubmit={editSubmit}>
         <label className="form-title">User name</label>
         <input type="text" defaultValue={nickNameValue} onChange={writeNickName} />
-        <span>write your own nick name!</span>
+        <span className="explanation">write your own nick name!</span>
         <button type="submit">edit</button>
       </form>
     </EditUserContainer>
@@ -68,7 +68,6 @@ const EditUserContainer = styled.div`
     margin: 0 auto;
 
     label.form-title {
-      display: block;
       margin-bottom: 3px;
     }
     input {
@@ -79,7 +78,7 @@ const EditUserContainer = styled.div`
       border: 1px solid #ddd;
       border-width: 0 0 1px 0;
     }
-    span {
+    .explanation {
       display: block;
       text-align: center;
       color: ${(props) => props.theme.colors.pointBlue};
