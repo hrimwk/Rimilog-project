@@ -1,10 +1,11 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import MainPostList from '../components/home/MainPostList';
 import { MdOutlineWavingHand } from 'react-icons/md';
+import axios from 'axios';
+import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
+
 import { loginState, nickNameState } from '../states/recoilState';
+import MainPostList from '../components/home/MainPostList';
 
 function Home() {
   const [weeklyBest, setWeekly] = useState([]);

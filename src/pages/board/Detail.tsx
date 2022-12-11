@@ -1,14 +1,15 @@
-import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import dompurify from 'dompurify';
 import { useRecoilValue } from 'recoil';
+
 import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
-import { useParams } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
 import { today, userId } from '../../assets/utils/common';
 import PostEdit from '../../components/common/detail/PostEdit';
-import dompurify from 'dompurify';
 
 interface Postcontent {
   title: string;

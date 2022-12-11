@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+
 type PropsType = {
   total: number;
   limit: number;
   page: number;
   setPage: (data: number) => void;
 };
+
 function Pagination(props: PropsType) {
   const { total, limit, page, setPage } = props;
 

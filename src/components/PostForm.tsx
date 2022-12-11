@@ -1,8 +1,9 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
-import { useMemo } from 'react';
+
+import { FORMATS } from '../assets/utils/postFom';
 import 'react-quill/dist/quill.snow.css';
-import { formats } from '../assets/utils/postFom';
 
 type PropsType = {
   content: string;
@@ -32,7 +33,7 @@ function PostForm(props: PropsType) {
   return (
     <PostContainer>
       <ReactQuill
-        formats={formats}
+        formats={FORMATS}
         value={content}
         onChange={getContent}
         modules={modules}

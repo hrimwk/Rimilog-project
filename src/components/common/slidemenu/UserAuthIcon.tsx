@@ -1,8 +1,9 @@
-import { CiLogin, CiLogout } from 'react-icons/ci';
-import { loginState } from '../../../states/recoilState';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+
+import { loginState } from '../../../states/recoilState';
+import { CiLogin, CiLogout } from 'react-icons/ci';
 import { token } from '../../../assets/utils/common';
 
 type PropsType = {

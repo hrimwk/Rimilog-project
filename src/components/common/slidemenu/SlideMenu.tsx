@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
-
-import { HiUserAdd } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 import React, { useEffect, useRef } from 'react';
-import { slideMenuState, nickNameState, loginState } from '../../../states/recoilState';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
+import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
+import { HiUserAdd } from 'react-icons/hi';
+import { slideMenuState, nickNameState, loginState } from '../../../states/recoilState';
 import UserAuthIcon from './UserAuthIcon';
 import { token, userId } from '../../../assets/utils/common';
 

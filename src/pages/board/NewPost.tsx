@@ -1,10 +1,11 @@
-import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
+
 import { loginState } from '../../states/recoilState';
 import NotLoggedIn from '../../components/common/NotLoggedIn';
-import { useNavigate } from 'react-router-dom';
 import PostForm from '../../components/PostForm';
 import { time, today } from '../../assets/utils/common';
 

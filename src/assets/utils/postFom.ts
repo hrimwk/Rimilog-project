@@ -1,4 +1,4 @@
-const formats = [
+const FORMATS = [
   'header',
   'bold',
   'italic',
@@ -11,4 +11,4 @@ const formats = [
   'code-block',
 ];
 
-export { formats };
+export { FORMATS };

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import NotLoggedIn from '../components/common/NotLoggedIn';
-import { ImUser } from 'react-icons/im';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { loginState, nickNameState } from '../states/recoilState';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useRecoilState, useRecoilValue } from 'recoil';
+
+import { loginState, nickNameState } from '../states/recoilState';
+import NotLoggedIn from '../components/common/NotLoggedIn';
 import { token, userId } from '../assets/utils/common';
+import { ImUser } from 'react-icons/im';
 
 function EditUser() {
   const loggedInValue = useRecoilValue(loginState);
