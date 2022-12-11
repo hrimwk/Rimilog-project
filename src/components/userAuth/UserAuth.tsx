@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSetRecoilState } from 'recoil';
 
-import { loginState, nickNameState } from '../states/recoilState';
-import { Auth, AuthFomType } from '../assets/utils/signup';
+import { loginState, nickNameState } from '../../states/recoilState';
+import { Auth, AuthFomType } from '../../assets/utils/signup';
 
 type PropsType = {
   formList: AuthFomType[];

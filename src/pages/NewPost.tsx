@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 
-import { loginState } from '../../states/recoilState';
-import NotLoggedIn from '../../components/common/NotLoggedIn';
-import PostForm from '../../components/PostForm';
-import { time, today } from '../../assets/utils/common';
+import { loginState } from '../states/recoilState';
+import NotLoggedIn from '../components/common/NotLoggedIn';
+import PostForm from '../components/write/WriteEditer';
+import { time, today } from '../assets/utils/common';
 
 function NewPost() {
   const [content, setContent] = useState('');
@@ -30,7 +30,7 @@ function NewPost() {
     };
     axios.post('http://localhost:3000/posts', data, {}).then((res) => {
       alert('게시글 작성이 완료되었습니다.');
-      navigate(`/board/detail/${res.data.id}`);
+      navigate(`/posts/detail/${res.data.id}`);
     });
   };
 

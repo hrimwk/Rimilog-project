@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 
-import { FORMATS } from '../assets/utils/postFom';
+import { FORMATS } from '../../assets/utils/postFom';
 import 'react-quill/dist/quill.snow.css';
 
 type PropsType = {

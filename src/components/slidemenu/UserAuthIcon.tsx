@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 
-import { loginState } from '../../../states/recoilState';
+import { loginState } from '../../states/recoilState';
 import { CiLogin, CiLogout } from 'react-icons/ci';
-import { token } from '../../../assets/utils/common';
+import { token } from '../../assets/utils/common';
 
 type PropsType = {
   clickIcon: (e: React.MouseEvent<HTMLElement>) => void;

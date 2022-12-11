@@ -5,11 +5,11 @@ import axios from 'axios';
 import dompurify from 'dompurify';
 import { useRecoilValue } from 'recoil';
 
-import { loginState } from '../../states/recoilState';
-import NotLoggedIn from '../../components/common/NotLoggedIn';
-import PostForm from '../../components/PostForm';
-import { today, userId } from '../../assets/utils/common';
-import PostEdit from '../../components/common/detail/PostEdit';
+import { loginState } from '../states/recoilState';
+import NotLoggedIn from '../components/common/NotLoggedIn';
+import PostForm from '../components/write/WriteEditer';
+import { today, userId } from '../assets/utils/common';
+import PostEdit from '../components/post/EditButton';
 
 interface Postcontent {
   title: string;

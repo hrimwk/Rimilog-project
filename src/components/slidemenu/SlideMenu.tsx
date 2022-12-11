@@ -6,9 +6,9 @@ import { useRecoilState } from 'recoil';
 
 import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
 import { HiUserAdd } from 'react-icons/hi';
-import { slideMenuState, nickNameState, loginState } from '../../../states/recoilState';
+import { slideMenuState, nickNameState, loginState } from '../../states/recoilState';
 import UserAuthIcon from './UserAuthIcon';
-import { token, userId } from '../../../assets/utils/common';
+import { token, userId } from '../../assets/utils/common';
 
 function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
@@ -19,8 +19,8 @@ function SlideMenu() {
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
-    { icon: <ImClipboard />, text: 'Board', link: '/board', id: 2 },
-    { icon: <ImCogs />, text: 'Edit', link: '/edit', id: 3 },
+    { icon: <ImClipboard />, text: 'Board', link: '/posts', id: 2 },
+    { icon: <ImCogs />, text: 'Edit', link: '/settings', id: 3 },
   ];
   useEffect(() => {
     userId &&

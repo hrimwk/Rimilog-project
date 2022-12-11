@@ -3,14 +3,14 @@ import GlobalStyles from './assets/styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 
 import Home from './pages/Home';
-import SlideMenu from './components/common/slidemenu/SlideMenu';
+import SlideMenu from './components/slidemenu/SlideMenu';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Board from './pages/board/Board';
-import NewPost from './pages/board/NewPost';
-import Detail from './pages/board/Detail';
+import Posts from './pages/Posts';
+import NewPost from './pages/NewPost';
+import Post from './pages/Post';
 import theme from './assets/styles/theme';
-import EditUser from './pages/EditUser';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -22,10 +22,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/board" element={<Board />} />
-          <Route path="/board/newpost" element={<NewPost />} />
-          <Route path="/board/detail/:id" element={<Detail />} />
-          <Route path="/edit" element={<EditUser />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/posts/newpost" element={<NewPost />} />
+          <Route path="/posts/detail/:id" element={<Post />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

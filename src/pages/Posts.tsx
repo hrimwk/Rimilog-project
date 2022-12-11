@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
-import { loginState } from '../../states/recoilState';
-import NotLoggedIn from '../../components/common/NotLoggedIn';
-import Pagination from '../../components/common/Pagination';
-import { today, userId } from '../../assets/utils/common';
+import { loginState } from '../states/recoilState';
+import NotLoggedIn from '../components/common/NotLoggedIn';
+import Pagination from '../components/common/Pagination';
+import { today, userId } from '../assets/utils/common';
 
 interface list {
   id: number;
@@ -30,7 +30,7 @@ function Board() {
     });
   }, []);
   return loggedInValue ? (
-    <BoardContainer className="container">
+    <PostsContainer className="container">
       <div className="boardWrap">
         <h1 className="title">BOARD</h1>
         <ul className="list-head d-flex">
@@ -47,7 +47,7 @@ function Board() {
                 <li key={data.id}>
                   <ul className="list-body d-flex">
                     <li className="num">{list.length - idx - offset}</li>
-                    <li className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
+                    <li className="list-title body" onClick={() => navigate(`/posts/detail/${data.id}`)}>
                       {data.title}
                     </li>
                     {today === data.date ? (
@@ -72,12 +72,12 @@ function Board() {
           <Pagination total={list.length} limit={LIMIT} page={page} setPage={setPage} />
         </div>
       </div>
-    </BoardContainer>
+    </PostsContainer>
   ) : (
     <NotLoggedIn />
   );
 }
-const BoardContainer = styled.div`
+const PostsContainer = styled.div`
   .boardWrap {
     position: relative;
     padding-bottom: 100px;

@@ -43,7 +43,7 @@ function PostEdit(props: PropsType) {
   const clickDelete = () => {
     confirm('삭제하시겠습니까?') &&
       axios.delete(`http://localhost:3000/posts/${postId}`).then((res) => {
-        navigate('/board');
+        navigate('/posts');
       });
   };
 

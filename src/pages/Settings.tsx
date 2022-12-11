@@ -34,7 +34,7 @@ function EditUser() {
   };
 
   return loggedInValue ? (
-    <EditUserContainer className="container">
+    <SettingsContainer className="container">
       <h1 className="title">User INFO</h1>
       <div className="profile-icon">
         <ImUser />
@@ -45,12 +45,12 @@ function EditUser() {
         <span className="explanation">write your own nick name!</span>
         <button type="submit">edit</button>
       </form>
-    </EditUserContainer>
+    </SettingsContainer>
   ) : (
     <NotLoggedIn />
   );
 }
-const EditUserContainer = styled.div`
+const SettingsContainer = styled.div`
   .profile-icon {
     text-align: center;
     width: 100px;

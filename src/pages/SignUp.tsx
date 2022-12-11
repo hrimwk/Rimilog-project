@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Auth, formList } from '../assets/utils/signup';
-import UserAuth from '../components/UserAuth';
+import UserAuth from '../components/userAuth/UserAuth';
 
 function SignUp() {
   const [authInput, setAuth] = useState<Auth>({

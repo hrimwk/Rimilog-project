@@ -22,7 +22,7 @@ function MainPostList(props: PropsType) {
             <li key={data.id}>
               <div className="content-title">
                 <p className="num">{idx + 1}</p>
-                <p className="list-title body" onClick={() => navigate(`/board/detail/${data.id}`)}>
+                <p className="list-title body" onClick={() => navigate(`/posts/detail/${data.id}`)}>
                   {data.title}
                 </p>
               </div>
