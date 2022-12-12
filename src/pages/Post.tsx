@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import dompurify from 'dompurify';
 import { useRecoilValue } from 'recoil';
@@ -10,6 +10,7 @@ import NotLoggedIn from '../components/common/NotLoggedIn';
 import PostForm from '../components/write/WriteEditer';
 import { today, userId } from '../assets/utils/common';
 import PostEdit from '../components/post/EditButton';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
 interface Postcontent {
   title: string;
@@ -33,6 +34,7 @@ function PostDetai() {
   const [editTitle, setEditTitle] = useState<string>('');
   const [edit, setEdit] = useState(false);
   const loggedInValue = useRecoilValue(loginState);
+  const navigate = useNavigate();
   const params = useParams();
   const postId = params.id;
 
@@ -48,7 +50,9 @@ function PostDetai() {
       setContent(res.data);
     });
   }, [edit]);
-
+  function goBack() {
+    navigate(-1);
+  }
   return loggedInValue ? (
     <NewPostContainer>
       <div className="container">
@@ -69,7 +73,9 @@ function PostDetai() {
             />
           )}
         </div>
-
+        <div className="go-back" onClick={goBack}>
+          <BsArrowLeftShort />
+        </div>
         {edit ? (
           <input className="post-title edit" defaultValue={postContent.title} onChange={contentTitleChange} />
         ) : (
@@ -119,6 +125,16 @@ const NewPostContainer = styled.div`
     h1,
     h2 {
       margin-bottom: 10px;
+    }
+  }
+  .go-back {
+    cursor: pointer;
+
+    svg {
+      font-size: 30px;
+      :hover {
+        color: #aaa;
+      }
     }
   }
   @media screen and (max-width: 640px) {
