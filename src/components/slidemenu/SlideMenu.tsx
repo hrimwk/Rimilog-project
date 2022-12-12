@@ -9,6 +9,7 @@ import { HiUserAdd } from 'react-icons/hi';
 import { slideMenuState, nickNameState, loginState } from '../../states/recoilState';
 import UserAuthIcon from './UserAuthIcon';
 import { token, userId } from '../../assets/utils/common';
+import UserIcon from './UserIcon';
 
 function SlideMenu() {
   const node = useRef<HTMLDivElement>(null);
@@ -22,6 +23,14 @@ function SlideMenu() {
     { icon: <ImClipboard />, text: 'Board', link: '/posts', id: 2 },
     { icon: <ImCogs />, text: 'Edit', link: '/settings', id: 3 },
   ];
+  const SIGNUP_ICON = {
+    icon: <HiUserAdd />,
+    text: 'Sign up',
+  };
+  const LOGIN_ICON = {
+    icon: <ImUser />,
+    text: nickNameValue,
+  };
   useEffect(() => {
     userId &&
       axios
@@ -68,18 +77,10 @@ function SlideMenu() {
         <div className={slideMenu ? 'slideOn slide-container' : 'slideOff slide-container'}>
           <div className="white mb-80" onClick={clickIcon}>
             {isLoggedIn ? (
-              <div>
-                <div className="user flex-center">
-                  <ImUser />
-                </div>
-                <span className="user-text">{nickNameValue}</span>
-              </div>
+              <UserIcon icon={LOGIN_ICON.icon} userText={LOGIN_ICON.text} />
             ) : (
               <Link to="/signup">
-                <div className="user flex-center">
-                  <HiUserAdd />
-                </div>
-                <span className="nav-text">Signup</span>
+                <UserIcon icon={SIGNUP_ICON.icon} userText={SIGNUP_ICON.text} />
               </Link>
             )}
           </div>
@@ -125,13 +126,6 @@ const SlideMenuContainer = styled.div`
     :hover {
     }
   }
-  .mb-80 {
-    margin-bottom: 80px;
-  }
-  .flex-center {
-    display: flex;
-    justify-content: center;
-  }
   .slideOff {
     width: 40px;
     overflow: hidden;
@@ -139,29 +133,10 @@ const SlideMenuContainer = styled.div`
   .slideOn {
     width: 150px !important;
   }
-  .user-text {
-    display: inline-block;
-    padding: 2px 40px 2px 0;
-    margin-left: 20px;
-    color: ${(props) => props.theme.colors.subGray};
-  }
-  .user {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #4b5564;
-    text-align: center;
-    svg {
-      transform: translateY(20%);
-      color: #fff;
-    }
-  }
-  .mt-30 {
-    margin-top: 30px;
-  }
+
   .logout {
     display: inline-block;
+    height: 35px;
     margin-right: 10px;
     svg {
       font-size: 30px;

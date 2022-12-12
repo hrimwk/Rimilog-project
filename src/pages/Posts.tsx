@@ -8,6 +8,7 @@ import { loginState } from '../states/recoilState';
 import NotLoggedIn from '../components/common/NotLoggedIn';
 import Pagination from '../components/common/Pagination';
 import { today, userId } from '../assets/utils/common';
+import NoPost from '../components/posts/NoPost';
 
 interface list {
   id: number;
@@ -23,12 +24,13 @@ function Board() {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * LIMIT;
   const loggedInValue = useRecoilValue(loginState);
+  const userId = localStorage.getItem('user-id');
 
   useEffect(() => {
     axios.get(`http://localhost:3000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {
       setList(res.data);
     });
-  }, []);
+  }, [list]);
   return loggedInValue ? (
     <PostsContainer className="container">
       <div className="boardWrap">
@@ -39,7 +41,7 @@ function Board() {
           <li className="date">date</li>
         </ul>
         {list.length === 0 ? (
-          <p>no posts</p>
+          <NoPost />
         ) : (
           <ul>
             {list.slice(offset, offset + LIMIT).map((data, idx) => {

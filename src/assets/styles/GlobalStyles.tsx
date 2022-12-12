@@ -59,6 +59,12 @@ input{
   .mb-50{
     margin-bottom: 50px;
   }
+  .mb-80 {
+    margin-bottom: 80px;
+  }
+  .mt-30 {
+    margin-top: 30px;
+  }
   .d-flex {
     display: flex;
     justify-content: space-between;
