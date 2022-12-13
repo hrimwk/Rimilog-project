@@ -14,13 +14,7 @@ function Login() {
 
   return (
     <>
-      <UserAuth
-        formList={loginFormList}
-        buttonString={buttonString}
-        setAuth={setLogin}
-        authInput={authInput}
-        postMethod="login"
-      />
+      <UserAuth formList={loginFormList} buttonString={buttonString} setAuth={setLogin} authInput={authInput} postMethod='login' />
     </>
   );
 }

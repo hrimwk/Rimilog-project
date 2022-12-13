@@ -10,8 +10,8 @@ function UserIcon(props: PropsType) {
 
   return (
     <UserIconContainer>
-      <div className="user d-flex-center">{icon}</div>
-      <span className="user-text">{userText}</span>
+      <div className='user d-flex-center'>{icon}</div>
+      <span className='user-text'>{userText}</span>
     </UserIconContainer>
   );
 }

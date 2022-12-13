@@ -5,6 +5,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { loginState, nickNameState } from '../../states/recoilState';
 import { Auth, AuthFomType } from '../../assets/utils/signup';
+import { useState, useEffect } from 'react';
 
 type PropsType = {
   formList: AuthFomType[];
@@ -17,9 +18,18 @@ type PropsType = {
 function UserAuth(props: PropsType) {
   const { formList, buttonString, setAuth, authInput, postMethod } = props;
 
+  const [confirmPw, setConfirmPw] = useState('');
+  const [pwMatched, setPwMatched] = useState(true);
   const setLoggedIn = useSetRecoilState(loginState);
   const setNickName = useSetRecoilState(nickNameState);
   const navigate = useNavigate();
+
+  function inputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setAuth({ ...authInput, [e.target.name]: e.target.value });
+  }
+  function ChangeConfirmPw(e: React.ChangeEvent<HTMLInputElement>) {
+    setConfirmPw(e.target.value);
+  }
 
   function formSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,32 +58,43 @@ function UserAuth(props: PropsType) {
         }
       });
   }
-  function inputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setAuth({ ...authInput, [e.target.name]: e.target.value });
-  }
+  useEffect(() => {
+    if (confirmPw !== authInput.password) {
+      setPwMatched(false);
+    } else {
+      setPwMatched(true);
+    }
+  }, [confirmPw]);
 
   return (
-    <UserAuthContainer className="container d-flex-center">
+    <UserAuthContainer className='container d-flex-center'>
       <form onSubmit={formSubmit}>
         <ul>
           {formList.map((data: AuthFomType) => {
             return (
-              <li key={data.id}>
+              <li className='input-wrap' key={data.id}>
                 <label>{data.label}</label>
-                <input type={data.type} name={data.name} onChange={inputChange} placeholder={data.placeHolder} />
+                <input type={data.type} name={data.name} onChange={inputChange} placeholder={data.placeHolder} required />
               </li>
             );
           })}
+          {postMethod === 'signup' && (
+            <li>
+              <label>비밀번호 확인</label>
+              <input type='password' name='confirmPassword' onChange={ChangeConfirmPw} placeholder='비밀번호를 다시입력해주세요.' />
+            </li>
+          )}
+          {pwMatched === false && <p className='alert-message-red'>비밀번호가 일치하지 않습니다.</p>}
         </ul>
 
-        <button type="submit">{buttonString}</button>
+        <button type='submit'>{buttonString}</button>
         {postMethod === 'login' ? (
-          <span className="ask">
-            혹시 회원이 아니신가요?&nbsp;<Link to="/signup">회원가입</Link>
+          <span className='ask'>
+            혹시 회원이 아니신가요?&nbsp;<Link to='/signup'>회원가입</Link>
           </span>
         ) : (
-          <span className="ask">
-            혹시 회원이신가요?&nbsp;<Link to="/login">로그인</Link>
+          <span className='ask'>
+            혹시 회원이신가요?&nbsp;<Link to='/login'>로그인</Link>
           </span>
         )}
       </form>
@@ -81,12 +102,19 @@ function UserAuth(props: PropsType) {
   );
 }
 const UserAuthContainer = styled.div`
+  .alert-message-red {
+    padding: 5px;
+    color: #ca0000;
+    font-size: 14px;
+  }
   form {
     flex-grow: 1;
     max-width: 400px;
     margin: 0 auto;
   }
-
+  .input-wrap {
+    margin-bottom: 25px;
+  }
   label {
     display: block;
     margin-bottom: 3px;
@@ -95,7 +123,6 @@ const UserAuthContainer = styled.div`
     display: block;
     width: 100%;
     padding: 10px;
-    margin-bottom: 25px;
     border: 1px solid #ddd;
     border-width: 0 0 1px 0;
   }

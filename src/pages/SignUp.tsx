@@ -14,13 +14,7 @@ function SignUp() {
 
   return (
     <>
-      <UserAuth
-        formList={formList}
-        buttonString={buttonString}
-        setAuth={setAuth}
-        authInput={authInput}
-        postMethod="register"
-      />
+      <UserAuth formList={formList} buttonString={buttonString} setAuth={setAuth} authInput={authInput} postMethod='signup' />
     </>
   );
 }

@@ -55,9 +55,9 @@ function PostDetai() {
   }
   return loggedInValue ? (
     <NewPostContainer>
-      <div className="container">
-        <div className="post-header">
-          <p className="wrriten-time">
+      <div className='container'>
+        <div className='post-header'>
+          <p className='wrriten-time'>
             Written day :&nbsp;
             {postContent.date === today ? <span>today&nbsp;{postContent.time}</span> : <span>{postContent.date}</span>}
           </p>
@@ -73,19 +73,15 @@ function PostDetai() {
             />
           )}
         </div>
-        <div className="go-back" onClick={goBack}>
+        <div className='go-back' onClick={goBack}>
           <BsArrowLeftShort />
         </div>
         {edit ? (
-          <input className="post-title edit" defaultValue={postContent.title} onChange={contentTitleChange} />
+          <input className='post-title edit' defaultValue={postContent.title} onChange={contentTitleChange} />
         ) : (
-          <h1 className="post-title title">{postContent.title}</h1>
+          <h1 className='post-title title'>{postContent.title}</h1>
         )}
-        {edit ? (
-          <PostForm content={editContent} setContent={setEditContent} />
-        ) : (
-          <div className="post-content" dangerouslySetInnerHTML={toHtml()} />
-        )}
+        {edit ? <PostForm content={editContent} setContent={setEditContent} /> : <div className='post-content' dangerouslySetInnerHTML={toHtml()} />}
       </div>
     </NewPostContainer>
   ) : (

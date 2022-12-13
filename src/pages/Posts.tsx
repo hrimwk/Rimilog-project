@@ -32,13 +32,13 @@ function Board() {
     });
   }, [list]);
   return loggedInValue ? (
-    <PostsContainer className="container">
-      <div className="boardWrap">
-        <h1 className="title">BOARD</h1>
-        <ul className="list-head d-flex">
-          <li className="num">No</li>
-          <li className="list-title">Title</li>
-          <li className="date">date</li>
+    <PostsContainer className='container'>
+      <div className='boardWrap'>
+        <h1 className='title'>BOARD</h1>
+        <ul className='list-head d-flex'>
+          <li className='num'>No</li>
+          <li className='list-title'>Title</li>
+          <li className='date'>date</li>
         </ul>
         {list.length === 0 ? (
           <NoPost />
@@ -47,25 +47,21 @@ function Board() {
             {list.slice(offset, offset + LIMIT).map((data, idx) => {
               return (
                 <li key={data.id}>
-                  <ul className="list-body d-flex">
-                    <li className="num">{list.length - idx - offset}</li>
-                    <li className="list-title body" onClick={() => navigate(`/posts/detail/${data.id}`)}>
+                  <ul className='list-body d-flex'>
+                    <li className='num'>{list.length - idx - offset}</li>
+                    <li className='list-title body' onClick={() => navigate(`/posts/detail/${data.id}`)}>
                       {data.title}
                     </li>
-                    {today === data.date ? (
-                      <li className="date">{data.time}</li>
-                    ) : (
-                      <li className="date">{data.date}</li>
-                    )}
+                    {today === data.date ? <li className='date'>{data.time}</li> : <li className='date'>{data.date}</li>}
                   </ul>
                 </li>
               );
             })}
           </ul>
         )}
-        <div className="pagination-area">
+        <div className='pagination-area'>
           <button
-            className="new-post"
+            className='new-post'
             onClick={() => {
               navigate('newpost');
             }}>

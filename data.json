@@ -11,19 +11,6 @@
       "password": "$2a$10$gnqXypLPgwhi8WRL5IvZG.P7aPaZwqYC2iLm1KzfUHhi8dJTffC6O",
       "nick_name": "bono",
       "id": "64mIBNh"
-    },
-    {
-      "email": "eeee@ss",
-      "password": "$2a$10$zIHdgl.7TAeUYnCiSHJxJul.gSp603k9FWC62L0QVevtjS/DWOmuq",
-      "nick_name": "유저",
-      "id": "qAnknPi"
-    },
-    {
-      "email": "eeee@ssqqq",
-      "password": "$2a$10$CJ6Sceou7ymFRXllCTmGSeBPZePnGPTogUaGmbnIL9H3TWMxKZOR.",
-      "nick_name": "ssss",
-      "confirmPassword": "test1234",
-      "id": "iie5GM7"
     }
   ],
   "posts": [

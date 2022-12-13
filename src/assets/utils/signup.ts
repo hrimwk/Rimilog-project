@@ -5,6 +5,7 @@ export interface AuthFomType {
   name: string;
   placeHolder: string;
   type: string;
+  alert?: string;
 }
 export interface Auth {
   email: string;
@@ -13,7 +14,15 @@ export interface Auth {
 }
 
 const formList: AuthFomType[] = [
-  { label: '아이디', value: 'id', id: 1, name: 'email', placeHolder: '이메일 형식으로 작성해주세요.', type: 'text' },
+  {
+    label: '아이디',
+    value: 'id',
+    id: 1,
+    name: 'email',
+    placeHolder: '이메일 형식으로 작성해주세요.',
+    type: 'text',
+    alert: '이메일 형식이 아닙니다.',
+  },
   {
     label: '닉네임',
     value: 'nick_name',
@@ -28,14 +37,6 @@ const formList: AuthFomType[] = [
     id: 3,
     name: 'password',
     placeHolder: '비밀번호를 입력해주세요.',
-    type: 'password',
-  },
-  {
-    label: '비밀번호 확인',
-    value: 'pwconfirm',
-    id: 4,
-    name: 'confirmPassword',
-    placeHolder: '비밀번호을 다시 입력해주세요.',
     type: 'password',
   },
 ];

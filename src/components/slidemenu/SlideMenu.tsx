@@ -75,11 +75,11 @@ function SlideMenu() {
     <>
       <SlideMenuContainer onClick={clickSlideMenu} ref={node}>
         <div className={slideMenu ? 'slideOn slide-container' : 'slideOff slide-container'}>
-          <div className="white mb-80" onClick={clickIcon}>
+          <div className='white mb-80' onClick={clickIcon}>
             {isLoggedIn ? (
               <UserIcon icon={LOGIN_ICON.icon} userText={LOGIN_ICON.text} />
             ) : (
-              <Link to="/signup">
+              <Link to='/signup'>
                 <UserIcon icon={SIGNUP_ICON.icon} userText={SIGNUP_ICON.text} />
               </Link>
             )}
@@ -88,10 +88,10 @@ function SlideMenu() {
             <ul>
               {navList.map((data) => {
                 return (
-                  <li className="white" onClick={clickIcon} key={data.id}>
+                  <li className='white' onClick={clickIcon} key={data.id}>
                     <Link to={data.link}>
-                      <div className="nav-icon">{data.icon}</div>
-                      <span className="nav-text">{data.text}</span>
+                      <div className='nav-icon'>{data.icon}</div>
+                      <span className='nav-text'>{data.text}</span>
                     </Link>
                   </li>
                 );
@@ -116,9 +116,6 @@ const SlideMenuContainer = styled.div`
   svg {
     font-size: 26px;
     color: ${(props) => props.theme.colors.iconColor};
-    :hover {
-      color: ${(props) => props.theme.colors.darkBlue};
-    }
   }
   .white {
     white-space: nowrap;
@@ -155,6 +152,9 @@ const SlideMenuContainer = styled.div`
 
     svg {
       transform: translateY(7px);
+      :hover {
+        color: ${(props) => props.theme.colors.darkBlue};
+      }
     }
     :nth-last-child(1) {
       margin-bottom: none;
