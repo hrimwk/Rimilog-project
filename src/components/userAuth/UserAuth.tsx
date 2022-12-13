@@ -20,6 +20,7 @@ function UserAuth(props: PropsType) {
 
   const [confirmPw, setConfirmPw] = useState('');
   const [pwMatched, setPwMatched] = useState(true);
+  const [emailFormat, setEmailFormat] = useState(true);
   const setLoggedIn = useSetRecoilState(loginState);
   const setNickName = useSetRecoilState(nickNameState);
   const navigate = useNavigate();
@@ -66,6 +67,14 @@ function UserAuth(props: PropsType) {
     }
   }, [confirmPw]);
 
+  useEffect(() => {
+    if (authInput.email.match(/[\w\-\.]+\@[\w\-\.]+/g)) {
+      setEmailFormat(true);
+    } else if (authInput.email.length > 0 && authInput.email.match(/[\w\-\.]+\@[\w\-\.]+/g) === null) {
+      setEmailFormat(false);
+    }
+  }, [authInput.email]);
+
   return (
     <UserAuthContainer className='container d-flex-center'>
       <form onSubmit={formSubmit}>
@@ -75,6 +84,7 @@ function UserAuth(props: PropsType) {
               <li className='input-wrap' key={data.id}>
                 <label>{data.label}</label>
                 <input type={data.type} name={data.name} onChange={inputChange} placeholder={data.placeHolder} required />
+                {emailFormat === false && <p className='alert-message-red'>{data.alert}</p>}
               </li>
             );
           })}
