@@ -68,7 +68,7 @@ function UserAuth(props: PropsType) {
   }, [confirmPw]);
 
   useEffect(() => {
-    if (authInput.email.match(/[\w\-\.]+\@[\w\-\.]+/g)) {
+    if (authInput.email.length === 0 || authInput.email.match(/[\w\-\.]+\@[\w\-\.]+/g)) {
       setEmailFormat(true);
     } else if (authInput.email.length > 0 && authInput.email.match(/[\w\-\.]+\@[\w\-\.]+/g) === null) {
       setEmailFormat(false);

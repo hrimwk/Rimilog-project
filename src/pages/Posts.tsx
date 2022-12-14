@@ -30,7 +30,7 @@ function Board() {
     axios.get(`http://localhost:3000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {
       setList(res.data);
     });
-  }, [list]);
+  }, []);
   return loggedInValue ? (
     <PostsContainer className='container'>
       <div className='boardWrap'>

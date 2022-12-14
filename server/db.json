@@ -1,0 +1,156 @@
+{
+  "users": [
+    {
+      "email": "test1@email.com",
+      "password": "$2a$10$Wcz8W6ofLqUf8Q.S4IhsceZvX12w8Bq1uJCcMv6IoXQoDm7BwkoHm",
+      "nick_name": "hola",
+      "id": "zH7jAYV"
+    },
+    {
+      "email": "test2@email.com",
+      "password": "$2a$10$gnqXypLPgwhi8WRL5IvZG.P7aPaZwqYC2iLm1KzfUHhi8dJTffC6O",
+      "nick_name": "bono",
+      "id": "64mIBNh"
+    }
+  ],
+  "posts": [
+    {
+      "title": "오늘 날씨 눈옴",
+      "body": "<p>오늘은 눈이 왔다.</p><p>드디어 겨울이 온것 같은 기분이다<.p>",
+      "date": "2022-12-03",
+      "time": "17:56",
+      "userId": "64mIBNh",
+      "id": 1
+    },
+    {
+      "title": "열심히 살아보자",
+      "body": "<p>내일은 조금 더 부지런하게 하루를 보내보고자 한다.</p>",
+      "date": "2022-12-03",
+      "time": "20:00",
+      "userId": "64mIBNh",
+      "id": 2
+    },
+    {
+      "title": "코딩을 열심히 하는 하루",
+      "body": "<p>부지런하게 코딩을 해봤다.</p>",
+      "date": "2022-12-04",
+      "time": "20:22",
+      "userId": "64mIBNh",
+      "id": 3
+    },
+    {
+      "title": "오늘은 조금 따뜻하다",
+      "body": "<p>날이 비교적 따뜻한 오늘!</p><h2>내일은 더 춥나?</h2>",
+      "date": "2022-12-06",
+      "time": "16:51",
+      "writer": "64mIBNh",
+      "id": 5
+    },
+    {
+      "title": "평온한 하루의 나날",
+      "body": "<p>다른날보다 내 자신에게 집중할 수 있었다.</p><p>언제나 즐거울 수는 없으나 평온한 기분이 좋다.</p>",
+      "date": "2022-12-06",
+      "time": "16:53",
+      "writer": "64mIBNh",
+      "id": 6
+    },
+    {
+      "title": "기분이 좋은 하루다",
+      "body": "<p>푹 쉴 수 있어서 좋았다</p><p>가끔은 이런날이 필요하다.</p>",
+      "date": "2022-12-06",
+      "time": "16:54",
+      "userId": "64mIBNh",
+      "id": 7
+    },
+    {
+      "title": "오늘은 날이 좋다",
+      "body": "<p>좋은 날씨는 좋아</p><p>별로 안 추워</p>",
+      "date": "2022-12-07",
+      "time": "00:08",
+      "userId": "64mIBNh",
+      "id": 8
+    },
+    {
+      "title": "오늘은 캐롤을 들었다",
+      "body": "<p>크리스마스가 얼마 남지 않았다.</p>",
+      "date": "2022-12-9",
+      "time": "22:07",
+      "userId": "zH7jAYV",
+      "id": 9
+    },
+    {
+      "title": "이번 크리스마스",
+      "body": "<p>에는 눈이 올까? 너무 궁금하다</p>",
+      "date": "2022-12-09",
+      "time": "01:41",
+      "userId": "64mIBNh",
+      "id": 10
+    },
+    {
+      "title": "wow!!",
+      "body": "<p>오늘 먹은 저녁이 너무 맛있었다!!</p>",
+      "date": "2022-12-09",
+      "time": "19:00",
+      "userId": "64mIBNh",
+      "id": 11
+    },
+    {
+      "title": "제목이 많이 길어지면 이렇게 되는데 확인하려고 쓰는 글 입니다. 제목이 길어요",
+      "body": "<p>ssss</p>",
+      "date": "2022-12-09",
+      "time": "19:00",
+      "userId": "64mIBNh",
+      "id": 12
+    },
+    {
+      "title": "!!",
+      "body": "<p>!!!</p>",
+      "date": "2022-12-09",
+      "time": "19:00",
+      "userId": "64mIBNh",
+      "id": 14
+    }
+  ],
+  "weeklyBest": [
+    {
+      "title": "오늘은 캐롤을 들었다",
+      "body": "<p>크리스마스가 얼마 남지 않았다.</p>",
+      "date": "2022-12-9",
+      "time": "22:07",
+      "userId": "zH7jAYV",
+      "id": 9
+    },
+    {
+      "title": "오늘은 날이 좋다",
+      "body": "<p>좋은 날씨는 좋아</p><p>별로 안 추워</p>",
+      "date": "2022-12-07",
+      "time": "00:08",
+      "userId": "64mIBNh",
+      "id": 8
+    },
+    {
+      "title": "열심히 살아보자",
+      "body": "<p>내일은 조금 더 부지런하게 하루를 보내보고자 한다.</p>",
+      "date": "2022-12-03",
+      "time": "20:00",
+      "userId": "64mIBNh",
+      "id": 2
+    },
+    {
+      "title": "오늘은 조금 따뜻하다",
+      "body": "<p>날이 비교적 따뜻한 오늘!</p><h2>내일은 더 춥나?</h2>",
+      "date": "2022-12-06",
+      "time": "16:51",
+      "writer": "64mIBNh",
+      "id": 5
+    },
+    {
+      "title": "!!",
+      "body": "<p>!!!</p>",
+      "date": "2022-12-09",
+      "time": "19:00",
+      "userId": "64mIBNh",
+      "id": 14
+    }
+  ]
+}
