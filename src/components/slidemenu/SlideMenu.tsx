@@ -34,7 +34,7 @@ function SlideMenu() {
   useEffect(() => {
     userId &&
       axios
-        .get(`http://localhost:3000/users/${userId}`, {
+        .get(`http://localhost:8000/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

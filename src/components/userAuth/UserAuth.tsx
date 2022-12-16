@@ -39,7 +39,7 @@ function UserAuth(props: PropsType) {
     };
 
     axios
-      .post(`http://localhost:3000/${postMethod}`, data)
+      .post(`http://localhost:8000/${postMethod}`, data)
       .then((res) => {
         if (postMethod === 'login') {
           localStorage.setItem('login-token', res.data.accessToken);

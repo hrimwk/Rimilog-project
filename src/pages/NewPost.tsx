@@ -28,7 +28,7 @@ function NewPost() {
       time: time,
       userId: localStorage.getItem('user-id'),
     };
-    axios.post('http://localhost:3000/posts', data, {}).then((res) => {
+    axios.post('http://localhost:8000/posts', data, {}).then((res) => {
       alert('게시글 작성이 완료되었습니다.');
       navigate(`/posts/detail/${res.data.id}`);
     });
@@ -36,21 +36,21 @@ function NewPost() {
 
   return loggedInValue ? (
     <NewPostContainer>
-      <div className="container">
+      <div className='container'>
         <form onSubmit={formSubmit}>
-          <h1 className="title">NEW POST</h1>
-          <p className="mb-10">
+          <h1 className='title'>NEW POST</h1>
+          <p className='mb-10'>
             Written day :
             <span>
               {today}&nbsp;
               {time}
             </span>
           </p>
-          <input className="post-title" type="text" placeholder="제목을 입력해주세요." onChange={getTitle} />
+          <input className='post-title' type='text' placeholder='제목을 입력해주세요.' onChange={getTitle} />
           <PostForm content={content} setContent={setContent} />
-          <div className="button-area">
-            <button type="reset">cancel</button>
-            <button type="submit">post</button>
+          <div className='button-area'>
+            <button type='reset'>cancel</button>
+            <button type='submit'>post</button>
           </div>
         </form>
       </div>

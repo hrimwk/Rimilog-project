@@ -36,13 +36,13 @@ function PostEdit(props: PropsType) {
       title: editTitle,
       body: editContent,
     };
-    axios.patch(`http://localhost:3000/posts/${postId}`, data).then((res) => {
+    axios.patch(`http://localhost:8000/posts/${postId}`, data).then((res) => {
       setEdit(false);
     });
   };
   const clickDelete = () => {
     confirm('삭제하시겠습니까?') &&
-      axios.delete(`http://localhost:3000/posts/${postId}`).then((res) => {
+      axios.delete(`http://localhost:8000/posts/${postId}`).then((res) => {
         navigate('/posts');
       });
   };

@@ -27,7 +27,7 @@ function Board() {
   const userId = localStorage.getItem('user-id');
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {
+    axios.get(`http://localhost:8000/posts?_sort=id&_order=desc&userId=${userId}`).then((res) => {
       setList(res.data);
     });
   }, []);

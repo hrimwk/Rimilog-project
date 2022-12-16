@@ -22,7 +22,7 @@ function EditUser() {
       nick_name: userInfo,
     };
     axios
-      .patch(`http://localhost:3000/users/${userId}`, data, {
+      .patch(`http://localhost:8000/users/${userId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,16 +34,16 @@ function EditUser() {
   };
 
   return loggedInValue ? (
-    <SettingsContainer className="container">
-      <h1 className="title">User INFO</h1>
-      <div className="profile-icon">
+    <SettingsContainer className='container'>
+      <h1 className='title'>User INFO</h1>
+      <div className='profile-icon'>
         <ImUser />
       </div>
       <form onSubmit={editSubmit}>
-        <label className="form-title">User name</label>
-        <input type="text" defaultValue={nickNameValue} onChange={writeNickName} />
-        <span className="explanation">write your own nick name!</span>
-        <button type="submit">edit</button>
+        <label className='form-title'>User name</label>
+        <input type='text' defaultValue={nickNameValue} onChange={writeNickName} />
+        <span className='explanation'>write your own nick name!</span>
+        <button type='submit'>edit</button>
       </form>
     </SettingsContainer>
   ) : (

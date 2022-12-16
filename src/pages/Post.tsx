@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { loginState } from '../states/recoilState';
 import NotLoggedIn from '../components/common/NotLoggedIn';
 import PostForm from '../components/write/WriteEditer';
-import { today, userId } from '../assets/utils/common';
+import { today } from '../assets/utils/common';
 import PostEdit from '../components/post/EditButton';
 import { BsArrowLeftShort } from 'react-icons/bs';
 
@@ -37,6 +37,7 @@ function PostDetai() {
   const navigate = useNavigate();
   const params = useParams();
   const postId = params.id;
+  const userId = localStorage.getItem('user-id');
 
   const contentTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditTitle(e.target.value);
@@ -46,7 +47,7 @@ function PostDetai() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/posts/${postId}`, {}).then((res) => {
+    axios.get(`http://localhost:8000/posts/${postId}`, {}).then((res) => {
       setContent(res.data);
     });
   }, [edit]);

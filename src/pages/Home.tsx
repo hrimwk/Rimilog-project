@@ -17,29 +17,29 @@ function Home() {
   const LATEST_LIST = 'Latest';
 
   useEffect(() => {
-    axios.get('http://localhost:3000/weeklyBest').then((res) => {
+    axios.get('http://localhost:8000/weeklyBest').then((res) => {
       setWeekly(res.data);
     });
-    axios.get('http://localhost:3000/posts').then((res) => {
+    axios.get('http://localhost:8000/posts').then((res) => {
       setLatestPost(res.data.slice(res.data.length - 5, res.data.length).reverse());
     });
   }, []);
 
   return (
-    <MainContainer className="container">
-      <section className="welcome">
-        <h1 className="greeting">
-          Hello {loggedInValue && <span className="point-color">{nickNameValue}</span>}&nbsp;
+    <MainContainer className='container'>
+      <section className='welcome'>
+        <h1 className='greeting'>
+          Hello {loggedInValue && <span className='point-color'>{nickNameValue}</span>}&nbsp;
           <MdOutlineWavingHand />
           &nbsp;&nbsp; Welcome to RIMILOG
         </h1>
         {loggedInValue ? (
-          <p className="app-info">Are you having a good day? Record your day with RIMILOG</p>
+          <p className='app-info'>Are you having a good day? Record your day with RIMILOG</p>
         ) : (
-          <p className="app-info">RIMILOG is a web application where you can keep a diary every day</p>
+          <p className='app-info'>RIMILOG is a web application where you can keep a diary every day</p>
         )}
       </section>
-      <section className="best-area d-flex">
+      <section className='best-area d-flex'>
         <MainPostList listData={weeklyBest} categoryTitle={PICK_LIST} />
         <MainPostList listData={latestPost} categoryTitle={LATEST_LIST} />
       </section>
