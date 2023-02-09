@@ -8,7 +8,6 @@ import { ImHome, ImUser, ImCogs, ImClipboard } from 'react-icons/im';
 import { HiUserAdd } from 'react-icons/hi';
 import { slideMenuState, nickNameState, loginState } from '../../states/recoilState';
 import UserAuthIcon from './UserAuthIcon';
-import { token, userId } from '../../assets/utils/common';
 import UserIcon from './UserIcon';
 
 function SlideMenu() {
@@ -17,6 +16,8 @@ function SlideMenu() {
   const [slideMenu, setSlideMenu] = useRecoilState(slideMenuState);
   const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
   const [nickNameValue, setNickName] = useRecoilState(nickNameState);
+  const userId = localStorage.getItem('user-id');
+  const token = localStorage.getItem('login-token');
 
   const navList = [
     { icon: <ImHome />, text: 'Home', link: '/', id: 1 },
@@ -43,11 +44,9 @@ function SlideMenu() {
           setNickName(res.data.nick_name);
         })
         .catch((error) => {
-          if (error.response.status === 401) {
-            localStorage.removeItem('login-token');
-            localStorage.removeItem('user-id');
-            setLoggedIn(false);
-          }
+          localStorage.removeItem('login-token');
+          localStorage.removeItem('user-id');
+          setLoggedIn(false);
         });
   }, []);
 

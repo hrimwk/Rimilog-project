@@ -15,14 +15,14 @@ function MainPostList(props: PropsType) {
   const navigate = useNavigate();
   return (
     <MainPostListContiner>
-      <h1 className="title">{categoryTitle}</h1>
+      <h1 className='title'>{categoryTitle}</h1>
       <ul>
         {listData.map((data, idx) => {
           return (
             <li key={data.id}>
-              <div className="content-title">
-                <p className="num">{idx + 1}</p>
-                <p className="list-title body" onClick={() => navigate(`/posts/detail/${data.id}`)}>
+              <div className='content-title'>
+                <p className='num'>{idx + 1}</p>
+                <p className='list-title body' onClick={() => navigate(`/posts/detail/${data.id}`)}>
                   {data.title}
                 </p>
               </div>

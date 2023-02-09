@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { loginState } from '../../states/recoilState';
 import { CiLogin, CiLogout } from 'react-icons/ci';
-import { token } from '../../assets/utils/common';
 
 type PropsType = {
   clickIcon: (e: React.MouseEvent<HTMLElement>) => void;
@@ -13,6 +12,7 @@ type PropsType = {
 function UserAuthIcon(props: PropsType) {
   const { clickIcon } = props;
   const [isLoggedIn, setLoggedIn] = useRecoilState(loginState);
+  const token = localStorage.getItem('login-token');
   const askLogout = () => {
     let isLogout = confirm('로그아웃하시겠습니까?');
     if (isLogout === true) {
@@ -28,20 +28,20 @@ function UserAuthIcon(props: PropsType) {
   }, []);
 
   return (
-    <div className="white mt-30" onClick={clickIcon}>
+    <div className='white mt-30' onClick={clickIcon}>
       {isLoggedIn ? (
         <>
-          <div onClick={askLogout} className="logout">
+          <div onClick={askLogout} className='logout'>
             <CiLogout />
           </div>
-          <span className="nav-text">Logout</span>
+          <span className='nav-text'>Logout</span>
         </>
       ) : (
-        <Link to="/login">
-          <div className="logout">
+        <Link to='/login'>
+          <div className='logout'>
             <CiLogin />
           </div>
-          <span className="nav-text">Login</span>
+          <span className='nav-text'>Login</span>
         </Link>
       )}
     </div>

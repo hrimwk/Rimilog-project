@@ -5,13 +5,15 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { loginState, nickNameState } from '../states/recoilState';
 import NotLoggedIn from '../components/common/NotLoggedIn';
-import { token, userId } from '../assets/utils/common';
 import { ImUser } from 'react-icons/im';
 
 function EditUser() {
   const loggedInValue = useRecoilValue(loginState);
   const [userInfo, setUser] = useState<string>();
   const [nickNameValue, setNickName] = useRecoilState(nickNameState);
+  const userId = localStorage.getItem('user-id');
+  const token = localStorage.getItem('login-token');
+
   const writeNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser(e.target.value);
   };
@@ -30,6 +32,9 @@ function EditUser() {
       .then((res) => {
         alert('수정이 완료되었습니다.');
         setNickName(res.data.nick_name);
+      })
+      .catch((err) => {
+        alert('수정이 반영되지 않았습니다.');
       });
   };
 

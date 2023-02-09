@@ -11,6 +11,12 @@
       "password": "$2a$10$gnqXypLPgwhi8WRL5IvZG.P7aPaZwqYC2iLm1KzfUHhi8dJTffC6O",
       "nick_name": "bono",
       "id": "64mIBNh"
+    },
+    {
+      "email": "test1234@emai.com",
+      "password": "$2a$10$jr07R9/YPZ1cEOaaX.2chukuMZwzNdidI.iQpM1l3w9Ny7/7KsAae",
+      "nick_name": "혜림",
+      "id": "DG_EGEI"
     }
   ],
   "posts": [

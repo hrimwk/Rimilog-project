@@ -12,17 +12,9 @@ import { today } from '../assets/utils/common';
 import PostEdit from '../components/post/EditButton';
 import { BsArrowLeftShort } from 'react-icons/bs';
 
-interface Postcontent {
-  title: string;
-  body: string;
-  date: string;
-  userId: string;
-  time: string;
-  id: number | null;
-}
 function PostDetai() {
   const sanitizer = dompurify.sanitize;
-  const [postContent, setContent] = useState<Postcontent>({
+  const [postContent, setContent] = useState({
     title: '',
     body: '',
     date: '',
